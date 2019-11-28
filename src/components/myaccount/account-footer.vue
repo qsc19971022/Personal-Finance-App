@@ -1,0 +1,30 @@
+<template>
+    <div class="account-foot">
+        <account-top></account-top>
+        <account-mid></account-mid>
+    </div>
+</template>
+
+<script>
+    import accountTop from "./acc-foot-top"
+    import middle from "./acc-foot-middle"
+    export default {
+        name: "account-footer",
+        components:{
+            "account-top":accountTop,
+            "account-mid":middle
+        }
+    }
+</script>
+
+<style scoped>
+.account-foot{
+    width: 95%;
+    border-top-right-radius: 0.15rem;
+    border-top-left-radius: 0.15rem;
+    margin: 0.1rem auto;
+    background-color: white;
+    border-right: 0.01rem solid gainsboro;
+    border-left: 0.01rem solid gainsboro;
+}
+</style>
