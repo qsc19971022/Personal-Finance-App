@@ -1,6 +1,7 @@
 <template>
     <div class="setP">
         <p>设置密码</p>
+        <p>注册成功后初始密码为手机号后六位，建议您重新设置密码</p>
         <input type="password" placeholder="输入密码" v-model="pass" class="tell" @change="ckp">
         <input type="password" placeholder="确认密码" v-model="mkpass" class="tell" @change="ckm">
         <p>密码长度6-32位，须包含数字、字母、符号至少2种或以上元素</p>
@@ -10,9 +11,13 @@
 </template>
 
 <script>
+import { Dialog } from 'vant'
 import Set from '../apis/setPass'
 export default {
     name:"set-pass",
+    components:{
+        [Dialog.name]:Dialog
+    },
     data(){
         return{
             pass:"",
@@ -44,15 +49,16 @@ export default {
         makeSure(){
             if(this.flagPass && this.flagmkPass){
                 let tel = localStorage.getItem("tel")
-                let flag = localStorage.getItem("flag")
-                Set.checkUserSet(tel,this.pass,flag,(data)=>{
-                    window.console.log(data)
-                    window.console.log(tel,flag)
+                Set.checkUserSet(tel,this.pass,()=>{
+
                 })
-                localStorage.removeItem("tel")
-                localStorage.removeItem("flag")
-                localStorage.setItem("route","set")
+                Dialog.alert({
+                    message:"密码设置成功"
+                })
                 this.$router.push("/login")
+                localStorage.removeItem("tel")
+                localStorage.setItem("route","set")
+
             }
         }
     }
@@ -80,11 +86,15 @@ export default {
     margin-left: 3%;
     margin-top: 0.2rem;
 }
-.setP>p:nth-child(4){
+.setP>p:nth-child(5){
     font-size: 0.12rem;
     padding-left: 4%;
     color: rgb(191, 191, 191);
     margin-top: 0.15rem;
+}
+.setP>p:nth-child(2){
+    font-size: 0.12rem;
+    text-align: center;
 }
 .btn{
     width: 90%;
@@ -102,14 +112,14 @@ export default {
     color: red;
     font-size: 0.12rem;
     position: absolute;
-    top: 1.1rem;
+    top: 1.25rem;
     left: 2.7rem;
 }
 #pan2{
     color: red;
     font-size: 0.12rem;
     position: absolute;
-    top: 1.7rem;
+    top: 1.85rem;
     left: 2.7rem;
 }
 </style>

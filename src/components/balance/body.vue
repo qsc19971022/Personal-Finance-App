@@ -2,16 +2,16 @@
     <div class="clo">
         <div class="bld">
             <p>总金额(元)<span :class="flag?'ceye':'oeye'" @click="flag=!flag"></span></p>
-            <p>{{flag?'10.85':'***'}}</p>
+            <p>{{flag?data.balance_money:'***'}}</p>
             <p>如果转入1万元，30天收益约<span>19.24</span>元</p>
             <div class="fld">
                 <div class="fls">
                     <p>累计收入(元)</p>
-                    <p>0</p>
+                    <p>{{data.user_balance}}</p>
                 </div>
                 <div class="fls">
                     <p>七日年化(%)</p>
-                    <p>2.298</p>
+                    <p>{{data.balance_rate}}</p>
                 </div>
             </div>
             <button @click="turnOut" class="lbtn">转出</button>
@@ -23,6 +23,7 @@
 <script>
 export default {
     name:"balance-body",
+    props:["data"],
     data(){
         return{
             flag:false

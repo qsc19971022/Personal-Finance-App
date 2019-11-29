@@ -1,11 +1,11 @@
 <template>
-    <div class="bind-con">
-        <a href="#/BindingCard" class="bind-option" v-for="(val,index) in con" :key="index">
-            <img :src="val.logo">
+    <div class="bind-con" v-if="data1">
+        <a href="#/BindingCard"  class="bind-option" v-for="(val,index) in data1"  :style="bgStyle[index]" :key="index">
+            <img :src="val.bank_logo">
             <div class="bind-option-con">
-                <p>{{val.back_name}}</p>{{val.back_type}}
+                <p>{{val.bank_name}}</p>{{val.bank_type}}
             </div>
-            <p>{{val.card_id}}</p>
+            <p>{{val.bank_id}}</p>
         </a>
     </div>
 </template>
@@ -13,17 +13,50 @@
 <script>
     export default {
         name: "bind-con",
+        props:["data1"],
         data(){
             return{
-                con:[
+               /* con:[
                     {"logo":"http://39.107.245.176/images/info/Screenshot_20191121_092214_com_03.png",
                     "back_name":"建设银行","back_type":"储蓄卡","card_id":"1234567890123456"},
                     {"logo":"http://39.107.245.176/images/info/Screenshot_20191121_092214_com_03.png",
                         "back_name":"建设银行","back_type":"储蓄卡","card_id":"1234567890123456"},
                     {"logo":"http://39.107.245.176/images/info/Screenshot_20191121_092214_com_03.png",
+                        "back_name":"建设银行","back_type":"储蓄卡","card_id":"1234567890123456"},
+                    {"logo":"http://39.107.245.176/images/info/Screenshot_20191121_092214_com_03.png",
+                        "back_name":"建设银行","back_type":"储蓄卡","card_id":"1234567890123456"},
+                    {"logo":"http://39.107.245.176/images/info/Screenshot_20191121_092214_com_03.png",
+                        "back_name":"建设银行","back_type":"储蓄卡","card_id":"1234567890123456"},
+                    {"logo":"http://39.107.245.176/images/info/Screenshot_20191121_092214_com_03.png",
                         "back_name":"建设银行","back_type":"储蓄卡","card_id":"1234567890123456"}
-                    ]
+                    ],*/
+                bgStyle:[
+                    "background: linear-gradient(blue 60%,deepskyblue);color:white;fontWeight:bold",
+                    "background: linear-gradient(black 60%,gray);color:white;fontWeight:bold",
+                    "background: linear-gradient(red,black);color:white;fontWeight:bold",
+                    "background: linear-gradient(blue,deepskyblue);color:white;fontWeight:bold",
+                    "background: linear-gradient(black 60%,gray);color:white;fontWeight:bold",
+                    "background: linear-gradient(red,black);color:white;fontWeight:bold",
+                    "background: linear-gradient(blue 60%,deepskyblue);color:white;fontWeight:bold",
+                    "background: linear-gradient(black 60%,gray);color:white;fontWeight:bold",
+                    "background: linear-gradient(red,black);color:white;fontWeight:bold",
+                    "background: linear-gradient(blue,deepskyblue);color:white;fontWeight:bold",
+                    "background: linear-gradient(black 60%,gray);color:white;fontWeight:bold",
+                    "background: linear-gradient(red,black);color:white;fontWeight:bold",
+                ]
             }
+        },
+        methods:{
+            changeID(){
+                for(let i=0;i<=10;i++){
+                    let str=this.data1[i].bank_id;
+                    str="**** **** **** "+str.substr(str.length-4);
+                    this.data1[i].bank_id=str;
+                }
+            }
+        },
+        beforeUpdate(){
+            this.changeID();
         }
     }
 </script>
@@ -37,8 +70,8 @@
     margin-top: 0.5rem;
     background-repeat: no-repeat;
 }
-    .bind-option{
-        width: 86%;
+.bind-option{
+        width: 94%;
         height: 1rem;
         color: gray;
         flex-wrap:wrap;
@@ -53,20 +86,22 @@
         margin: 0 auto 0.3rem ;
     }
 .bind-option-con{
-    width: 2rem;
+    color: white;
+    font-size: 0.14rem;
+    width: 2.68rem;
 }
     .bind-option-con>p{
         font-size: 0.15rem;
         font-weight: 600;
-        color:rgb(96,115,130);
+        color:white;
     }
-.bind-option>img:nth-child(1){
+.bind-option>img{
     height:0.4rem;
     border-radius: 50%;
-    border: 0.01rem solid gainsboro;
+    margin-top: 0.05rem;
 }
 .bind-option>p:nth-child(3){
     height: 0.2rem;
-    margin-top: 0.15rem;
+    margin-left: 0.55rem;
 }
 </style>

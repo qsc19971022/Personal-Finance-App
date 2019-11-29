@@ -2,7 +2,7 @@
     <div class="vheader">
         <span @click="goto"></span>
        <p>设置</p>
-        <p class="xi"></p>
+        <p class="xi" @click="go"></p>
     </div>
 </template>
 
@@ -12,6 +12,9 @@
         methods:{
             goto(){
                 this.$router.replace("./my")
+            },
+            go(){
+                this.$router.replace("./robot")
             }
         }
     }
@@ -25,7 +28,7 @@
     justify-content: space-around;
     width: 100%;
     height: 0.6rem;
-    background-image: url("../../../public/assets/images/5.png");
+    background-image: url("../../../public/assets/images/my/5.png");
     background-size: 100% 100%;
 }
 .vheader span{
@@ -34,7 +37,7 @@
     position: absolute;
     left: 0.1rem;
     top: 0.2rem;
-    background-image: url("../../../public/assets/images/all_search_reslut_back.png");
+    background-image: url("../../../public/assets/images/my/reslut_back.png");
     background-size: 100% 100%;
 }
 .vheader p{
@@ -51,7 +54,7 @@
         position: absolute;
         left: 3.33rem;
         top: 0.15rem;
-        background-image: url("../../../public/assets/images/customerservice.png");
+        background-image: url("../../../public/assets/images/my/customerservice.png");
         background-size: 100% 100%;
     }
 </style>

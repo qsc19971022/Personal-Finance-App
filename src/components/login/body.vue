@@ -15,9 +15,13 @@
 </template>
 
 <script>
+import { Dialog } from 'vant'
 import Login from '../../apis/login'
 export default {
     name:"login-body",
+    components:{
+        [Dialog.name]:Dialog
+    },
     data(){
         return{
             telephone:"",
@@ -50,14 +54,26 @@ export default {
         checkIn(){
             if(this.flagName && this.flagPass){
                 Login.checkUserLogin(this.telephone,this.pass,(data)=>{
-                    window.console.log(data)
+                    if(data.status == 0){
+                        window.console.log(data)
+                        Dialog.alert({
+                            message:"登录成功"
+                        })
+                        localStorage.setItem("token",data.token)
+                        localStorage.setItem("user",this.telephone)
+                        if(localStorage.getItem("route") == "set"){
+                            this.$router.push("/index")
+                            localStorage.removeItem("route")
+                        }else{
+                            this.$router.go(-1)
+                        }
+                    }else{
+                        Dialog.alert({
+                            message:"账号/密码有误"
+                        })
+                    }
                 })
-                if(localStorage.getItem("route") == "set"){
-                    this.$router.push("/index")
-                    localStorage.removeItem("route")
-                }else{
-                    this.$router.go(-1)
-                }
+
             }
         }
     }

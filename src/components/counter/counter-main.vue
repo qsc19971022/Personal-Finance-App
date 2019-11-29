@@ -27,7 +27,7 @@
 
 <style scoped>
     .counter-con{
-        margin:0.05rem 0.1rem;
-        border-top: 0.005rem solid black ;
+        margin:0.55rem 0.1rem;
+        border-top: 0.005rem solid rgb(203,203,203) ;
     }
 </style>

@@ -1,36 +1,36 @@
 <template>
     <div class="bg_img">
         <div class="strategy">
-            <span class="str_icon"><img src="../../../public/assets/images/4.png" alt="logo"></span>
-            <span class="str_right"><img src="../../../public/assets/images/3.png" alt="world"></span>
+            <span class="str_icon"><img src="../../../public/assets/images/my/4.png" alt="logo"></span>
+            <span class="str_right"><img src="../../../public/assets/images/my/3.png" alt="world"></span>
         </div>
         <div class="code">
-                <span class="red_code"><a href="#" @click="copy" ref="local">http://localhost:8080/#/reg?id={{user}}</a><img src="../../../public/assets/images/salary_title_background.png" alt="logo"></span>
-                <span class="cde"><a href="#" @click="showPopup">邀请好友</a><img src="../../../public/assets/images/querymore_dialog_btn.png" alt="logo"></span>
+                <span class="red_code"><a href="#" @click="copy" ref="local">http://localhost:8080/#/reg?id={{user}}</a><img src="../../../public/assets/images/my/salary_title_background.png" alt="logo"></span>
+                <span class="cde"><a href="#" @click="showPopup">{{this.btnName}}</a><img src="../../../public/assets/images/my/querymore_dialog_btn.png" alt="logo"></span>
     </div>
         <h5>规则说明</h5>
         <div class="rolu">
-            <span class="start"><img src="../../../public/assets/images/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
+            <span class="start"><img src="../../../public/assets/images/my/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
             <p>邀请小伙伴下载并登录钱夕夕</p>
         </div>
         <div class="rolu">
-            <span class="start"><img src="../../../public/assets/images/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
+            <span class="start"><img src="../../../public/assets/images/my/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
             <p>被邀请者在App中使用邀请码</p>
         </div>
         <div class="rolu">
-            <span class="start"><img src="../../../public/assets/images/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
+            <span class="start"><img src="../../../public/assets/images/my/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
             <p>使用成功后，系统自动为双方发放5枚夕夕币</p>
         </div>
         <div class="rolu">
-            <span class="start"><img src="../../../public/assets/images/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
+            <span class="start"><img src="../../../public/assets/images/my/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
             <p>一个手机号只能绑定一次</p>
         </div>
         <div class="rolu">
-            <span class="start"><img src="../../../public/assets/images/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
+            <span class="start"><img src="../../../public/assets/images/my/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
             <p>每个月邀请上限为5个好友，次月清零可重新邀请</p>
         </div>
         <div class="rolu">
-            <span class="start"><img src="../../../public/assets/images/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
+            <span class="start"><img src="../../../public/assets/images/my/abc_btn_rating_star_off_mtrl_alpha.png" alt="star"></span>
             <p>本活动最终解释权归钱夕夕所有</p>
         </div>
     </div>
@@ -42,13 +42,15 @@
         name: "center",
         data(){
           return {
-              user:""
+              user:"",
+              btnName:"生成链接"
           }
         },
         methods:{
             showPopup() {
                 Toast('请复制链接进行分享');
                 this.$refs.local.style.display="block"
+                this.btnName = "邀请好友"
             },
             copy(){
                 Toast.success('复制成功');
@@ -64,8 +66,8 @@
 <style scoped>
 .bg_img{
     width: 100%;
-    height: 100vh;
-    background-image: url("../../../public/assets/images/background_menu_adv.png");
+    height: 5.4rem;
+    background-image: url("../../../public/assets/images/my/background_menu_adv.png");
     background-size: 100% 100%;
 }
     .bg_img h5{

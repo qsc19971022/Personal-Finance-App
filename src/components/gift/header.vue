@@ -1,15 +1,15 @@
 <template>
     <div>
     <div class="header_gift">
-        <span @click="goto"></span>
+        <span @click="go"></span>
         <p>新手礼包</p>
     </div>
     <div class="middele">
         <div class="bg_img">
             <span class="news">新人专享基金等你拿</span>
-            <span class="gift"><img src="../../../public/assets/images/xuebank_task.png" alt="logo"></span>
-            <span class="gift2"><img src="../../../public/assets/images/z0fde1e788867a6466ff49531b38f57bc.png" alt="logo"></span>
-            <img src="../../../public/assets/images/2.png" alt="img">
+            <span class="gift"><img src="../../../public/assets/images/my/xuebank_task.png" alt="logo"></span>
+            <span class="gift2"><img src="../../../public/assets/images/my/z0fde1e788867a6466ff49531b38f57bc.png" alt="logo"></span>
+            <img src="../../../public/assets/images/my/2.png" alt="img">
         </div>
     </div>
     </div>
@@ -19,7 +19,7 @@
     export default {
         name: "vheader",
         methods:{
-            goto(){
+            go(){
                 this.$router.replace("./index")
             }
         }
@@ -33,7 +33,7 @@
     justify-content: space-around;
     width: 100%;
     height: 0.6rem;
-    background-image: url("../../../public/assets/images/title_bar_bg.png");
+    background-image: url("../../../public/assets/images/my/title_bar_bg.png");
     background-size: 100% 100%;
 }
 .header_gift span{
@@ -42,7 +42,7 @@
     position: absolute;
     left: 0.01rem;
     top: 0.15rem;
-    background-image: url("../../../public/assets/images/arrow_back.png");
+    background-image: url("../../../public/assets/images/my/arrow_back.png");
     background-size: 100% 100%;
 }
     .header_gift p{
@@ -66,7 +66,7 @@
         height: 100%;
     }
     .bg_img{
-        background-image: url("../../../public/assets/images/favor_banner.png");
+        background-image: url("../../../public/assets/images/my/favor_banner.png");
     }
 .gift{
     width: 0.27rem;

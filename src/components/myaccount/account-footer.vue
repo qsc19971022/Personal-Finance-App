@@ -1,6 +1,6 @@
 <template>
-    <div class="account-foot">
-        <account-top></account-top>
+    <div class="account-foot" v-if="data">
+        <account-top :data="data"></account-top>
         <account-mid></account-mid>
     </div>
 </template>
@@ -10,6 +10,7 @@
     import middle from "./acc-foot-middle"
     export default {
         name: "account-footer",
+        props:["data"],
         components:{
             "account-top":accountTop,
             "account-mid":middle

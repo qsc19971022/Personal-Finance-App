@@ -1,6 +1,6 @@
-import {BASEURL} from "../commons/ZQConfig";
+import {BASEURL} from "../commons/Config";
 
-const GIFTURL=`${BASEURL}/gift`;
+const GIFTURL=`${BASEURL}/products/novice_list/`;
 
 export default {
     getProductInfo(cb){

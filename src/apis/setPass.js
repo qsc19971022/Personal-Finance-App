@@ -1,15 +1,18 @@
 import {BASEURL} from "../commons/Config"
 
-const SETNURL = `${BASEURL}/set`
+const SETNURL = `${BASEURL}/user/setpwd/`
 
 export default {
-    checkUserSet(name,pass,flag,cb){
+    checkUserSet(name,pass,cb){
         fetch(SETNURL,{
             method:"POST",
             headers:{
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json"
             },
-            body:`username=${name}&password=${pass}&flag=${flag}`
+            body:JSON.stringify({
+                name:name,
+                pwd:pass
+            })
         }).then(res=>{
             res.json().then(cb)
         })

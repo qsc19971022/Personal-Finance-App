@@ -1,6 +1,6 @@
 <template>
     <div  v-if="data">
-        <a class="info-con"  v-for="(val,index) in data" :key="index">
+        <a   class="info-con"  v-for="(val,index) in data" :key="index" @click="PostId(val.info_id)">
             <div class="info-con-con">
                 <p>{{val.title}}</p>
                 <p>{{val.date}} <span>
@@ -13,18 +13,35 @@
 </template>
 
 <script>
+    import infoDetailApi from "../../apis/infoDetailApi";
     export default {
         name: "info-con",
         props:["data"],
         data(){
             return{
                 number:0,
+                InfoDet:{},
             }
         },
         methods:{
-            _con(){
-                console.log(this.data)
-            }
+            PostId(info_id){
+                let id=info_id;
+                let tk=null;
+                let phone=null;
+                if(localStorage.getItem("token")&&localStorage.getItem("user")){
+                    tk=localStorage.getItem("token");
+                    phone=localStorage.getItem("user");
+                }else{
+                    tk='';
+                    phone='';
+                }
+                console.log(phone,tk,info_id);
+                infoDetailApi.getInfoDetail(id,tk,phone,(data)=>{
+                    this.InfoDet=data;
+                    this.$eventBus.$emit("info",this.InfoDet);
+                })
+                this.$router.push("/infoDetail");
+             },
         },
         mounted(){
             this.$eventBus.$on("cone",(a)=>{
@@ -56,6 +73,9 @@
         margin-top:0.4rem;
         justify-content: space-between;
     }
+.info-con-con>p:nth-child(1){
+    color: #333333;
+}
     .info-con-con>p>span>img{
         width: 0.15rem;
         height: 0.12rem;

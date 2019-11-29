@@ -20,9 +20,13 @@
 </template>
 
 <script>
+import { Dialog } from 'vant'
 import Reg from '../../apis/reg'
 export default {
     name:"register-body",
+    components:{
+        [Dialog.name]:Dialog
+    },
     data(){
         return{
             telephone:"",
@@ -48,11 +52,17 @@ export default {
         checkIn(){
             if(this.flagName){
                 Reg.checkUserCode(this.telephone,this.code,this.content,this.$route.query.id,(data)=>{
-                    window.console.log(data)
+                    if(data.status == 0){
+                        this.$router.push("/set")
+                        localStorage.setItem("tel",this.telephone)
+                        localStorage.setItem("flag",this.content)
+                    }else{
+                        Dialog.alert({
+                            message:"手机验证码有误"
+                        })
+                    }
                 })
-                this.$router.push("/set")
-                localStorage.setItem("tel",this.telephone)
-                localStorage.setItem("flag",this.content)
+
             }
         },
         updater(){
@@ -66,23 +76,36 @@ export default {
         getCode(){
             if(this.flagName){
                 Reg.checkUserTel(this.telephone,this.content,(data)=>{
-                    window.console.log(data)
-                })
-                this.$refs.g.style.border = "none"
-                this.Verification = "后再获取"
-                this.$refs.c.style.display = "inline"
-                let time = setInterval(()=>{
-                    this.count--;
-                    if(this.count == 55){
-                        clearInterval(time);
-                        this.$refs.g.style.border = "";
-                        this.$refs.c.style.display = "none";
-                        this.Verification = "获取验证码";
-                        this.count = 60
+                    if(data.status == 0){
+                        this.$refs.g.style.border = "none"
+                        this.Verification = "后再获取"
+                        this.$refs.c.style.display = "inline"
+                        let time = setInterval(()=>{
+                            this.count--;
+                            if(this.count == 0){
+                                clearInterval(time);
+                                this.$refs.g.style.border = "";
+                                this.$refs.c.style.display = "none";
+                                this.Verification = "获取验证码";
+                                this.count = 60
+                            }
+                        },1000)
+                    }else{
+                        if(this.content == "注册"){
+                            Dialog.alert({
+                                message:"该用户已被注册"
+                            })
+                        }else{
+                            Dialog.alert({
+                                message:"该用户不存在"
+                            })
+                        }
                     }
-                },1000)
+                })
             }else{
-                alert("手机格式错误")
+                Dialog.alert({
+                    message:"手机格式错误"
+                })
             }
         }
     }

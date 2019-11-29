@@ -24,7 +24,7 @@
         padding-left: 0.1rem;
         color:black;
         box-sizing: border-box;
-        border:0.005rem solid black;
+        border:0.005rem solid rgb(203,203,203);
         border-top: none;
         background-image: url("../../../../public/assets/images/product/btmlt.png");
         background-size: 0.2rem;

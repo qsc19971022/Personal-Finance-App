@@ -6,24 +6,24 @@
         <p class="xi"></p>
     </div>
         <div class="background">
-            <img src="../../../public/assets/images/logo2.png" alt="logo">
+            <img src="../../../public/assets/images/my/logo2.png" alt="logo">
             <span>版本号:1.0.0.0</span>
         </div>
         <div class="about">
-            <ul class="about_ul">
-                <li @click="showPopup">二维码</li>
+            <ul class="about_ul" @click="showPopup">
+                <li>二维码</li>
                 <span class="bg_1"></span>
             </ul>
         </div>
         <div class="about">
-            <ul class="about_ul">
-                <li @click="check">检测新版本</li>
+            <ul class="about_ul" @click="check">
+                <li>检测新版本</li>
                 <span class="bg_1"></span>
             </ul>
         </div>
         <van-popup  v-model="show">
             <span class="world">扫码分享</span>
-            <img src="../../../public/assets/images/1574055954.png" alt="二维码" class="img">
+            <img src="../../../public/assets/images/my/1574055954.png" alt="二维码" class="img">
             <span class="firend">邀请好友扫一扫分享给Ta</span>
             <span class="open" @click="open">关闭</span>
         </van-popup>
@@ -105,7 +105,7 @@
         justify-content: space-around;
         width: 100%;
         height: 0.6rem;
-        background-image: url("../../../public/assets/images/daily_tip.png");
+        background-image: url("../../../public/assets/images/my/daily_tip.png");
         background-size: 100% 100%;
     }
     .vheader span{
@@ -114,7 +114,7 @@
         position: absolute;
         left: 0.01rem;
         top: 0.15rem;
-        background-image: url("../../../public/assets/images/arrow_back.png");
+        background-image: url("../../../public/assets/images/my/arrow_back.png");
         background-size: 100% 100%;
     }
     .vheader p{
@@ -127,7 +127,7 @@
         box-sizing: border-box;
     }
     .background{
-        background-image: url("../../../public/assets/images/querysellect_head_bg.png");
+        background-image: url("../../../public/assets/images/my/querysellect_head_bg.png");
         background-size: 100% 100%;
         width: 100%;
         height: 2.5rem;

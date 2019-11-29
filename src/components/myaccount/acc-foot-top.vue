@@ -1,22 +1,22 @@
 <template>
-    <div class="afoot-top">
+    <div class="afoot-top" v-if="data">
         <p class="afoot-top-con">我的账户<span><img src="../../../public/assets/images/info/logo.png">小夕理财资金存管</span></p>
         <div class="account-money">
             <div class="account-money-top">
                 <h3 class="account-total">账户总资产(元)<span class="ac-show" :class="{ac_open:!flag}" @click="Openeye"></span></h3>
-                <h1 v-if="flag">{{totalMoney}}</h1>
+                <h1 v-if="flag">{{data.u_account_money}}</h1>
                 <h1 v-else>****</h1>
                 <a href="#/"><img src="../../../public/assets/images/info/Screenshot_20191118_221356_com.xzck_03.png"></a>
             </div>
             <div class="account-money-foot">
                 <div>
                     <h4>已赚收益(元)</h4>
-                    <h4 v-if="flag">{{Profit}}</h4>
+                    <h4 v-if="flag">{{data.income}}</h4>
                     <h4 v-else>****</h4>
                 </div>
                 <div>
                     <h4>账户余额(元)</h4>
-                    <h4 v-if="flag">{{balance}}</h4>
+                    <h4 v-if="flag">{{data.user_money}}</h4>
                     <h4 v-else>****</h4>
                 </div>
             </div>
@@ -27,6 +27,7 @@
 <script>
     export default {
         name: "acc-foot-top",
+        props:["data"],
         data(){
             return{
                 totalMoney:'0.00',

@@ -1,9 +1,10 @@
 <template>
     <div class="account-head">
-        <a href="#/"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_03.png"></a>
-        <a href="#/"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_05.png">
-            <img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_07.png">
-        </a>
+        <a href="#/robot"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_03.png"></a>
+        <p>
+            <a href="#/robot"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_05.png"></a>
+            <a href="#/newImg"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_07.png"></a>
+        </p>
     </div>
 </template>
 
@@ -32,6 +33,11 @@
     display: flex;
     width: 0.6rem;
     justify-content: space-between;
+}
+.account-head>p{
+    width: 0.6rem;
+    justify-content: space-between;
+    display: flex;
 }
 .account-head img{
     width:0.25rem;

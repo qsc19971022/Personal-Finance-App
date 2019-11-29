@@ -1,5 +1,5 @@
 <template>
-   <p class="counter"><span @click="back" class="back">返回</span>{{data.con}}</p>
+   <p class="counter"><span @click="back" class="back">返回</span>{{data.product_name}}</p>
 </template>
 
 <script>
@@ -20,14 +20,17 @@
 
 <style scoped>
     .counter{
-        height:0.5rem;
-        line-height: 0.5rem;
-        font-size: 0.16rem;
-        color:white;
-        text-align: center;
-        background-color: red;
-       position: relative;
-       border-bottom: 0.005rem solid gray;
+       position: fixed;
+       top:0rem;
+       left:0rem;
+       right:0rem;
+       height:0.5rem;
+       line-height: 0.5rem;
+       font-size: 0.2rem;
+       color:white;
+       text-align: center;
+       background-color: rgb(198,0,11);
+       border-bottom: 0.005rem solid rgb(203,203,203);
     }
     .back{
         display:block;

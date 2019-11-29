@@ -1,17 +1,18 @@
 import {BASEURL} from "../commons/Config"
 
-const LOGINURL = `${BASEURL}/login`
+const LOGINURL = `${BASEURL}/user/login/`
 
 export default {
     checkUserLogin(name,pass,cb){
         fetch(LOGINURL,{
             method:"POST",
             headers:{
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json;charset=UTF-8"
             },
-            body:`username=${name}&password=${pass}`
-        }).then(res=>{
-            res.json().then(cb)
-        })
+            body:JSON.stringify({
+                name: name,
+                pwd: pass
+            })
+        }).then(res=>res.json().then(cb))
     }
 }

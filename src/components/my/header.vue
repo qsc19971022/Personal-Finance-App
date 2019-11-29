@@ -4,7 +4,7 @@
       <div class="top">
         <span class="top_icon"></span>
         <p class="address">西安</p>
-        <span class="icon_1"></span>
+        <span class="icon_1" @click="go"></span>
         <span class="icon_2"></span>
       </div>
     </header>
@@ -13,7 +13,12 @@
 
 <script>
     export default {
-        name: "vheader"
+        name: "vheader",
+      methods:{
+        go(){
+          this.$router.replace("./robot")
+        }
+      }
     }
 </script>
 
@@ -31,7 +36,7 @@ header{
     display: inline-block;
     width: 0.18rem;
     height: 0.19rem;
-    background:url("../../../public/assets/images/selector_location_icon_black.png");
+    background:url("../../../public/assets/images/my/selector_location_icon_black.png");
     background-size: 100% 100%;
     position: absolute;
     left: 0.2rem;
@@ -47,7 +52,7 @@ header{
     display: block;
     width: 0.30rem;
     height: 0.28rem;
-    background: url("../../../public/assets/images/mine_oldage_message.png");
+    background: url("../../../public/assets/images/my/mine_oldage_message.png");
     background-size: 100% 100%;
     position: absolute;
     left: 2.9rem;
@@ -58,7 +63,7 @@ header{
     width: 0.30rem;
     height: 0.28rem;
     background-size: 100% 100%;
-    background-image:url("../../../public/assets/images/mine_oldage_more.png");
+    background-image:url("../../../public/assets/images/my/mine_oldage_more.png");
     position: absolute;
     left: 3.3rem;
     top: 0.08rem;

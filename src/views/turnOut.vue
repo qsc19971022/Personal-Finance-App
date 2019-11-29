@@ -1,7 +1,7 @@
 <template>
     <div>
         <balance-turn-out-header></balance-turn-out-header>
-        <balance-turn-out-body></balance-turn-out-body>
+        <balance-turn-out-body ix="0" :data="turnOutInfo"></balance-turn-out-body>
         <balance-turn-out-footer></balance-turn-out-footer>
     </div>
 </template>
@@ -26,7 +26,7 @@ export default {
     methods:{ 
         _initData(){
             let user = localStorage.getItem("user")
-            turnOutApi.turnOut(user,(data)=>{
+            turnOutApi.turnOut(user,"转出",(data)=>{
                 this.turnOutInfo = data
                 window.console.log(data)
             })

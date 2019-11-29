@@ -1,7 +1,7 @@
 <template>
     <div class="an">
         <balance-turn-in-header></balance-turn-in-header>
-        <balance-turn-in-body></balance-turn-in-body>
+        <balance-turn-in-body :data="turnInfo"></balance-turn-in-body>
         <balance-turn-in-footer></balance-turn-in-footer>
     </div>
 </template>
@@ -26,9 +26,8 @@ export default {
     methods:{ 
         _initData(){
             let user = localStorage.getItem("user")
-            turnInApi.turnIn(user,(data)=>{
+            turnInApi.turnIn(user,"转入",(data)=>{
                 this.turnInfo = data
-                window.console.log(data)
             })
         }
     },

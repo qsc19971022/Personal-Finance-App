@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
     import { PullRefresh,Toast} from 'vant';
     import header from "../components/info/info-header"
     import slide from "../components/info/info-slide"
@@ -24,7 +23,8 @@
             return{
                 Info:[],
                 number1:0,
-                isLoading: false
+                isLoading: false,
+                InfoDetail:{}
             }
         },
         components:{
@@ -39,20 +39,20 @@
             async _initPageInfo(){
                 let data=await infoApi.getInfoPage();
                 this.Info=data;
-                //console.log(data);
+                //console.log(this.Info)
             },
             onRefresh() {
                 setTimeout(() => {
                     this.$toast('刷新成功');
                     this.isLoading = false;
                 }, 500);
-            }
+            },
         },
         async mounted() {
             this._initPageInfo();
             this.$eventBus.$on("cone",(a)=>{
                 this.number1=a;
-            })
+            });
         },
     }
 </script>

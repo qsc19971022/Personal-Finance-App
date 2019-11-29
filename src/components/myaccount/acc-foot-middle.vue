@@ -3,7 +3,7 @@
         <div class="a-foot-mid" v-for="(val,index) in func" :key="index">
             <p>{{val.title}}</p>
             <div v-for="(val1,index1) in val.con" :key="index1">
-                <a href="#"><img :src="val1.pic"><br/>{{val1.desc}}</a>
+                <a @click="BackCard(index,index1)"><img :src="val1.pic"><br/>{{val1.desc}}</a>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                        "con":[
                            {"pic":"http://39.107.245.176/images/info/Screenshot_20191121_090601_com.xzck_03.png","desc":"我的优惠券"},
                            {"pic":"http://39.107.245.176/images/info/Screenshot_20191121_090601_com.xzck_05.png","desc":"体验金"},
-                           {"pic":"http://39.107.245.176/images/info/Screenshot_20191121_090601_com.xzck_07.png","desc":"礼品卡"},
+                           {"pic":"http://39.107.245.176/images/info/Screenshot_20191121_090601_com.xzck_07.png","desc":"银行卡"},
                        ]
                    },
                    {"title":"账户管理",
@@ -40,6 +40,23 @@
                    }
                ]
            }
+        },
+        methods:{
+            BackCard(index,index1){
+                if(index==1&&index1==0){
+                    this.$router.push("/MyCoupon");
+                }else if(index==1&&index1==2){
+                    this.$router.push("/BindingCard");
+                }else if (index==2&&index1==0){
+                    this.$router.push("/setPayPwd");
+                }else if (index==0&&index1==0){
+                    this.$router.push("/setmoney");
+                }else if (index==0&&index1==1){
+                    this.$router.push("/getmoney");
+                }else if (index==0&&index1==6){
+                    this.$router.push("/cashbook");
+                }
+            }
         }
     }
 </script>

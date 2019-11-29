@@ -1,6 +1,6 @@
 <template>
     <div class="info-head" v-if="data">
-        <a href="#/BindingCard">{{data.title}}</a><a href="#/my_account">{{data.more}}<img src="http://39.107.245.176/images/info/Screenshot_20191118_221356_com.xzck_03.png"></a>
+        <a href="#/info">{{data.title}}</a><a href="#/product">{{data.more}}<img src="http://39.107.245.176/images/info/Screenshot_20191118_221356_com.xzck_03.png"></a>
     </div>
 </template>
 

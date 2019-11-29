@@ -1,7 +1,7 @@
 <template>
     <div>
         <balance-header></balance-header>
-        <balance-body></balance-body>
+        <balance-body :data="balInfo"></balance-body>
         <balance-footer></balance-footer>
     </div>
 </template>

@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="index-header">
-            <a href="#" class="index-header-login" ref="login">登录</a>
-            <a href="#" class="index-header-exit" ref="exit" @click="exit">退出</a>
+            <a href="login" class="index-header-login" ref="login">登录</a>
+            <a href="#" class="index-header-exit" ref="exit" @click.prevent="exit">退出</a>
             <input type="search" id="index-header-search" placeholder="搜功能  搜产品" @click="search">
-            <a href="#" class="index-header-wx"></a>
-            <a href="#/luck" class="index-header-add"></a>
+            <a href="#/robot" class="index-header-wx"></a>
+            <a href="#/map" class="index-header-add"></a>
         </div>
         <index-banner></index-banner>
         <index-top v-if="navInfo" :data="navInfo.indexNews"></index-top>

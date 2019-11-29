@@ -1,41 +1,45 @@
 <template>
     <div>
         <div class="bind-head">
-            <a class="bind-prev" href="#/info"></a>
+            <a class="bind-prev" href="#/"></a>
             <p class="bind-one">银行卡</p>
-            <p class="bind-plugin"><a href="#/BindingCard">
+            <div class="bind-plugin"><a href="#/robot">
                 <img src="../../../public/assets/images/info/Screenshot_20191121_092208_com_05.png"></a>
-                <van-cell is-link @click="showPopup">
+                <div is-link @click="showPopup">
                     <img src="../../../public/assets/images/info/Screenshot_20191121_092208_com_07.png">
-                </van-cell>
-            </p>
+                </div>
+            </div>
         </div>
         <van-popup class="van-popup"
                    v-model="show"
                    position="top"
                    :style="{ height: '20%',}"
         >
-            <a href="#/">登录</a>
-            <a href="#">首页</a>
+            <a href="#/login" v-if="token ==''">登录</a>
+            <a href="#/">首页</a>
             <a href="#">扫一扫</a>
         </van-popup>
     </div>
 </template>
 
 <script>
+    import Vue from "vue"
     import {Popup} from "vant"
+    Vue.use(Popup)
     export default {
         name: "bing-header",
         components:{
-            [Popup.name]:Popup
+            //[Popup.name]:Popup
         },
         data(){
             return{
                 show:false,
+                token:localStorage.getItem("token")
             }
         },
         methods:{
             showPopup() {
+                console.log(this.token);
                 this.show = true;
             }
         }
@@ -48,6 +52,7 @@
         margin-left: 2.7rem;
         text-align: center;
         width: 0.9rem;
+        border-radius: 0.1rem;
         overflow-y: hidden;
         height: 20%;
         line-height: 0rem;
@@ -105,7 +110,7 @@
     margin-left: 0.3rem;
 }
 .bind-plugin>a,
-.bind-plugin>van-cell>img{
+.bind-plugin>div>img{
     width: 0.2rem;
     margin-left: 0.1rem;
     height: 0.2rem;

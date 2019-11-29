@@ -2,7 +2,7 @@
     <div class="baf">
         <p>新人专享</p>
         <div class="bgf">
-            <div class="sgf">
+            <div class="sgf" @click="gonew">
                 <div>
                     <p>新人见面礼</p>
                     <p>收益奖励当钱花</p>
@@ -30,6 +30,9 @@ export default {
     methods:{
         goSug(){
             this.$router.push("/sug")
+        },
+        gonew(){
+            this.$router.push("/gift")
         }
     }
 }

@@ -1,6 +1,6 @@
 import {BASEURL} from "../commons/Config"
 
-const BALURL = `${BASEURL}/balance`
+const BALURL = `${BASEURL}/balance/`
 
 export default {
     balance(user,cb){

@@ -6,13 +6,14 @@
         </div>
         <div v-if="nge">
             <div class="bank" @click="showPopup">
-                <img src="../../../public/assets/images/balance/0191121185908.png">
-                <p ref="zx">中国农业银行(6527)</p>
+                <img ref="zm" v-if="data.user_bank_cards != 0" :src="data.user_bank_cards[ix].logo">
+                <p v-if="data.user_bank_cards !=0" ref="zx">{{data.user_bank_cards[ix].bank_name}}</p>
+                <p v-if="data.user_bank_cards == 0" class="noc">您还未绑卡，请点击此处绑定银行卡</p>
                 <span>></span>
             </div>
             <div class="mon">
                 <span>￥</span>
-                <input @input="del" v-model="money" :placeholder="'可转出到卡'+total+'元'" type="Number">
+                <input @input="del" v-model="money" :placeholder="'本次最多可转出'+data.balance_money+'元'" type="Number">
                 <span @click="all">全部</span>
                 <span ref="z" class="warn">转出金额超限</span>
                 <span @click="mov" ref="d" class="cle">x</span>
@@ -29,11 +30,11 @@
             <button @click="makesureOutCard" ref="b" class="qbtn">确认转出</button>
             <van-popup v-model="show" position="bottom" closeable close-icon-position="top-left" class="vap">
                 <p class="chos">选择银行卡</p>
-                <div class="ffban" @click="clse">
-                    <img src="../../../public/assets/images/balance/0191121185908.png">
-                    <p>中国农业银行(6527)</p>
+                <div class="ffban" @click="clse(i)" :key="i" v-for="(u,i) in data.user_bank_cards">
+                    <img :src="u.logo">
+                    <p>{{u.bank_name}}</p>
                 </div>
-                <div class="ffban">
+                <div @click="bcard" class="ffban">
                     <img src="../../../public/assets/images/balance/0191122143000.png">
                     <p>添加银行卡</p>
                 </div>
@@ -42,7 +43,7 @@
         <div v-else>
             <div class="mon">
                 <span>￥</span>
-                <input @input="delr" v-model="moneyr" :placeholder="'本次最多可转出'+total+'元'" type="Number">
+                <input @input="delr" v-model="moneyr" :placeholder="'本次最多可转出'+data.balance_money+'元'" type="Number">
                 <span @click="allr">全部</span>
                 <span ref="zz" class="warn">转出金额超限</span>
                 <span @click="movr" ref="dd" class="cle">x</span>
@@ -55,30 +56,36 @@
 
 <script>
 import outMoney from '../../apis/turnOut'
-import { Radio,RadioGroup,Popup } from 'vant';
+import { Radio,RadioGroup,Popup,Dialog } from 'vant';
 export default {
     name:"balance-turn-out-body",
+    props:["data","ix"],
     components:{
         [Radio.name]:Radio,
         [RadioGroup.name]:RadioGroup,
-        [Popup.name]:Popup
+        [Popup.name]:Popup,
+        [Dialog.name]:Dialog
     },
     data(){
         return{
             nge:true,
             blu:true,
-            total:10.85,
             money:"",
             moneyr:"",
             radio:"fast",
             m:"",
             d:"",
-            show:false
+            show:false,
         }
     },
     methods:{
-        clse(){
+        bcard(){
+            this.$router.push("/BingCard")
+        },
+        clse(i){
             this.show = false
+            this.$refs.zm.src = this.data.user_bank_cards[i].logo
+            this.$refs.zx.innerHTML = this.data.user_bank_cards[i].bank_name
         },
         blo(){
             this.blu = true
@@ -88,21 +95,32 @@ export default {
             this.blu = false
             this.nge = false
         },
-        del(){
+        del(){       
             if(this.money > 0){
                 this.$refs.d.style.display = "block"
                 this.$refs.b.style.backgroundColor = "rgb(16,142,233)"
                 this.$refs.b.style.color = "white"
-                if(this.money > this.total){
+                if(this.money > this.data.balance_money){
                     this.$refs.z.style.display = "block"
                     this.$refs.b.style.backgroundColor = ""
                     this.$refs.b.style.color = ""
                 }else{
                     this.$refs.z.style.display = "none"
                 }
+                if(this.radio == "fast"){
+                    if(this.money > 10000){
+                        this.$refs.z.style.display = "block"
+                        this.$refs.b.style.backgroundColor = ""
+                        this.$refs.b.style.color = ""
+                    }
+                }
             }else{
                 this.$refs.d.style.display = "none"
                 this.$refs.z.style.display = "none"
+                this.$refs.b.style.backgroundColor = ""
+                this.$refs.b.style.color = ""
+            }
+            if(this.card == 0){
                 this.$refs.b.style.backgroundColor = ""
                 this.$refs.b.style.color = ""
             }
@@ -115,18 +133,22 @@ export default {
             this.$refs.b.style.color = ""
         },
         all(){
-            this.money = this.total
+            this.money = this.data.balance_money
             this.$refs.d.style.display = "block"
             this.$refs.b.style.backgroundColor = "rgb(16,142,233)"
             this.$refs.b.style.color = "white"
             this.$refs.z.style = "none"
+            if(this.data.balance_money == 0){
+                this.$refs.b.style.backgroundColor = ""
+                this.$refs.b.style.color = ""
+            }
         },
         delr(){
             if(this.moneyr > 0){
                 this.$refs.dd.style.display = "block"
                 this.$refs.bb.style.backgroundColor = "rgb(16,142,233)"
                 this.$refs.bb.style.color = "white"
-                if(this.moneyr > this.total){
+                if(this.moneyr > this.data.balance_money){
                     this.$refs.zz.style.display = "block"
                     this.$refs.bb.style.backgroundColor = ""
                     this.$refs.bb.style.color = ""
@@ -148,11 +170,15 @@ export default {
             this.$refs.bb.style.color = ""
         },
         allr(){
-            this.moneyr = this.total
+            this.moneyr = this.data.balance_money
             this.$refs.dd.style.display = "block"
             this.$refs.bb.style.backgroundColor = "rgb(16,142,233)"
             this.$refs.bb.style.color = "white"
             this.$refs.zz.style = "none"
+            if(this.data.balance_money == 0){
+                this.$refs.bb.style.backgroundColor = ""
+                this.$refs.bb.style.color = ""
+            }
         },
         showPopup(){
             this.show = true
@@ -160,16 +186,20 @@ export default {
         makesureOutCard(){
             if(this.$refs.b.style.color == "white"){
                 let user = localStorage.getItem("user")
-                outMoney.turnOutMoneyCard(user,"银行卡",this.$refs.zx.innerHTML,this.money,this.radio,(data)=>{
+                outMoney.turnOutMoneyCard(user,"转出",this.$refs.zx.innerHTML,this.money,(data)=>{
                     window.console.log(data)
+                    alert("已成功转到您的银行卡中")
+                    this.$router.push("/balance")
                 })
             }
         },
         makesureOut(){
             if(this.$refs.bb.style.color == "white"){
                 let user = localStorage.getItem("user")
-                outMoney.turnOutMoney(user,"账户余额",this.moneyr,(data)=>{
+                outMoney.turnOutMoney(user,"转出",this.moneyr,(data)=>{
                     window.console.log(data)
+                    alert("已成功转到您的账户余额")
+                    this.$router.push("/balance")
                 })
             }
         }
@@ -239,7 +269,9 @@ export default {
 .mon>span:nth-child(3){
     font-size: 0.14rem;
     color: rgb(10, 139, 231);
-    margin-left: 0.15rem;
+    position: absolute;
+    top: 0.35rem;
+    left: 82%;
 }
 ::-webkit-input-placeholder{
     font-size: 0.14rem;
@@ -329,5 +361,11 @@ export default {
 }
 .ffban>p:nth-child(2){
     margin-left: 0.1rem;
+}
+.noc{
+    margin-left: 17%;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    font-size: 0.14rem;
 }
 </style>

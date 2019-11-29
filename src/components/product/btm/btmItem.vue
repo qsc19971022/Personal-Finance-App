@@ -1,14 +1,14 @@
 <template>
-    <div class="btmItem">
-        <p><a href=""><span class="redspan"></span>{{data.product_name}}</a><a href="" v-if="data.is_novice">{{data.is_novice}}</a></p>
+    <div class="btmItem" @click="productDetail">
+        <p><a href=""><span class="redspan"></span>{{data.product_name}}</a><a href="" v-if="data.is_novice">{{data.is_novice}}</a><a href="" v-if="data.is_novice">2</a></p>
         <div class="product-con">
             <div class="product-left">
                 <p><span>{{data.rate}}</span><span>%</span></p>
-                <p>{{data.text1}}</p>
+                <p>年化收益率</p>
                 <i></i>
             </div>
             <div class="product-right">
-                <p><span>项目期限</span><span>{{data.trade}}</span></p>
+                <p><span>项目期限</span><span>{{data.trade}} 天</span></p>
                 <p><span>剩余金额</span><span>{{data.pro_balance}}</span></p>
                 <span>一次性付息还本</span>
             </div>
@@ -19,7 +19,18 @@
 <script>
     export default{
         name:"btmItem",
-        props:["data"]
+        props:["data"],
+        data(){
+          return{
+              productName:[],
+              // data1:[]
+          }
+        },
+        methods:{
+            productDetail(){
+                location.href=`#/product/detail?name=${this.data.product_name}`;
+            }
+        }
     }
 
 </script>
@@ -28,10 +39,10 @@
     .redspan{
         position: absolute;
         left:0rem;
-        top:0.06rem;
+        top:0.075rem;
         display: block;
         width:0.05rem;
-        height:0.15rem;
+        height:0.18rem;
         background-color: red;
     }
     .btmItem{
@@ -40,7 +51,6 @@
         padding-top:0.05rem;
         box-sizing: border-box;
         margin:0.1rem auto;
-        /*border:0.005rem solid red;*/
         border-radius: 0.15rem;
         overflow:hidden;
         box-shadow:0rem 0rem 0.08rem -0.04rem;
@@ -57,13 +67,14 @@
         padding-left: 0.35rem;
         font-size: 0.12rem;
     }
-    .btmItem>p>a:nth-child(1){
+    .btmItem>p>a:nth-of-type(1){
         background-color: white;
+        font-size: 0.16rem;
         padding-left:0.15rem;
         box-sizing: border-box;
         position: relative;
     }
-    .btmItem>p>a:nth-child(2){
+    .btmItem>p>a:nth-of-type(2),.btmItem>p>a:nth-of-type(3){
         background-color: #00B7FF;
         border-radius: 0.05rem;
         height:0.2rem;
@@ -71,8 +82,7 @@
         color:white;
         text-align: center;
         margin-right:0.1rem;
-        position: absolute;
-    }
+     }
     .btmItem>p>a:nth-child(2){
         left:1.6rem;
         top:0.12rem;

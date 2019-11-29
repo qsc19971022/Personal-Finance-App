@@ -4,7 +4,7 @@
             <img ref="q" src="../../../public/assets/images/balance/0191122151358.png">
             <div class="bst">
                 <p ref="w">账户余额</p>
-                <p ref="e">6.70元</p>
+                <p ref="e">{{data.user_account_balance}}元</p>
             </div>
             <span>></span>
         </div>
@@ -23,14 +23,16 @@
             <p class="chos">选择付款方式</p>
             <div class="ffban" @click="bmo">
                 <img ref="r" src="../../../public/assets/images/balance/0191122151358.png">
-                <p ref="t">账户余额（剩余：￥<span ref="y">{{total}}</span>）</p>
+                <p ref="t">账户余额（剩余：￥<span ref="y">{{data.user_account_balance}}元</span>）</p>
             </div>
-            <div class="ffban" @click="clse">
-                <img ref="qq" src="../../../public/assets/images/balance/0191121185908.png">
+            <div :key="i" v-for="(u,i) in data.user_bank_cards">
+            <div class="ffban" @click="clse(i)">
+                <img ref="qq" :src="u.logo">
                 <div class="fbn">
-                    <p ref="ww">中国农业银行储蓄卡(6527)</p>
+                    <p ref="ww">{{u.bank_name}}</p>
                     <p ref="ee">银行单笔限额20000.00元</p>
                 </div>    
+            </div>
             </div>
         </van-popup>
     </div>
@@ -41,13 +43,13 @@ import inMoney from '../../apis/turnIn'
 import { Popup } from 'vant';
 export default {
     name:"balance-turn-in-body",
+    props:["data"],
     components:{
         [Popup.name]:Popup
     },
     data(){
         return{
             money:"",
-            total:6.70,
             m:"",
             d:"",
             show:false
@@ -60,7 +62,7 @@ export default {
                     this.$refs.d.style.display = "block"
                     this.$refs.b.style.backgroundColor = "rgb(16,142,233)"
                     this.$refs.b.style.color = "white"
-                    if(this.money > this.total){
+                    if(this.money > this.data.user_account_balance){
                         this.$refs.z.style.display = "block"
                         this.$refs.z.innerHTML = "余额可用额度不足"
                         this.$refs.b.style.backgroundColor = ""
@@ -96,17 +98,17 @@ export default {
             this.$refs.b.style.color = ""
         },
         all(){
-            this.money = this.total
+            this.money = this.data.user_account_balance
             this.$refs.d.style.display = "block"
-            this.$refs.b.style.backgroundColor = "rgb(16,142,233)"
-            this.$refs.b.style.color = "white"
             this.$refs.z.style = "none"
+            this.$refs.b.style.backgroundColor = "rgb(16,142,233)"
+            this.$refs.b.style.color = "white"      
         },
-        clse(){
+        clse(i){
             this.show = false
-            this.$refs.q.src = this.$refs.qq.src
-            this.$refs.w.innerHTML = this.$refs.ww.innerHTML
-            this.$refs.e.innerHTML = this.$refs.ee.innerHTML
+            this.$refs.q.src = this.data.user_bank_cards[i].logo
+            this.$refs.w.innerHTML = this.data.user_bank_cards[i].bank_name
+            this.$refs.e.innerHTML = "银行单笔限额20000元"
         },
         bmo(){
             this.show = false
@@ -132,8 +134,10 @@ export default {
         makesureInMoney(){
             if(this.$refs.b.style.color == "white"){
                 let user = localStorage.getItem("user")
-                inMoney.turnInMoney(user,this.$refs.w.innerHTML,this.money,(data)=>{
+                inMoney.turnInMoney(user,"转入",this.$refs.w.innerHTML,this.money,(data)=>{
                     window.console.log(data)
+                    alert("您已成功转入余额多")
+                    this.$router.push("/balance")
                 })
             }
         }
@@ -200,7 +204,9 @@ export default {
 .mon>span:nth-child(3){
     font-size: 0.14rem;
     color: rgb(10, 139, 231);
-    margin-left: 0.15rem;
+    position: absolute;
+    top: 0.35rem;
+    left: 82%;
 }
 ::-webkit-input-placeholder{
     font-size: 0.14rem;

@@ -1,26 +1,35 @@
 import {BASEURL} from "../commons/Config"
 
-const REGNURL = `${BASEURL}/reg`
+const REGNURL = `${BASEURL}/user/send_code/`
+const REGISTNURL = `${BASEURL}/user/regist/`
 
 export default {
     checkUserTel(name,flag,cb){
         fetch(REGNURL,{
             method:"POST",
             headers:{
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json"
             },
-            body:`username=${name}&flag=${flag}`
+            body:JSON.stringify({
+                phone:name,
+                flag:flag
+            })
         }).then(res=>{
             res.json().then(cb)
         })
     },
     checkUserCode(name,code,flag,query,cb){
-        fetch(REGNURL,{
+        fetch(REGISTNURL,{
             method:"POST",
             headers:{
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json"
             },
-            body:`username=${name}&code=${code}&flag=${flag}&phone=${query}`
+            body:JSON.stringify({
+                phone:name,
+                code:code,
+                flag:flag,
+                query:query
+            })
         }).then(res=>{
             res.json().then(cb)
         })

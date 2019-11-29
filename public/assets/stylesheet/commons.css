@@ -1,0 +1,13 @@
+@charset "utf-8";
+body,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,figure,figcaption{margin:0;padding:0}
+body{font-family: "微软雅黑";font-weight: normal;}
+body,html{height:100%;font-size: 0.12rem}
+a,u{text-decoration: none;}
+i,em{font-style:normal}
+ul,ol,li{list-style:none;}
+img{display:block;border:0;}/*解决图片间隙与边框的兼容性问题 */
+input{outline:none;border:0;}
+.clear_fix:after{content:".";clear:both;height:0;overflow:hidden;display:block;visibility: hidden;}/*height:0; 保证低版本浏览器兼容 */
+.l{float: left;}.r{float:right;}
+html{font-size: 26.67vw;}
+*{box-sizing: border-box;}

@@ -1,15 +1,15 @@
 <template>
-    <div class="bg_col">
+    <div class="bg_col" @click="go(bdx)">
     <div class="btmItem">
-        <p><a href=""><span class="redspan"></span>{{data.product_name}}</a><a href="" v-if="data.is_novice">{{data.is_novice}}</a></p>
+        <p><a><span class="redspan"></span>{{data.product_name}}</a><a v-if="data.is_novice">新人系列</a></p>
         <div class="product-con">
             <div class="product-left">
                 <p><span>{{data.rate}}</span><span>%</span></p>
-                <p>{{data.text1}}</p>
+                <p>年化收益率</p>
                 <i></i>
             </div>
             <div class="product-right">
-                <p><span>项目期限</span><span>{{data.trade}}</span></p>
+                <p><span>项目期限</span><span>{{data.trade}}天</span></p>
                 <p><span>剩余金额</span><span>{{data.pro_balance}}</span></p>
                 <span>一次性付息还本</span>
             </div>
@@ -21,7 +21,13 @@
 <script>
     export default{
         name:"btmItem",
-        props:["data"]
+        props:["data","bdx"],
+        methods:{
+            go(){
+                let dat = this.data.product_name
+                this.$router.replace(`./product/detail?name=${dat}`)
+            }
+        }
     }
 
 </script>
@@ -29,7 +35,7 @@
 <style scoped>
     .bg_col{
         background-size: 100% 100%;
-        background-image: url("../../../public/assets/images/background_preciousmetal_nodetail.png");
+        background-image: url("../../../public/assets/images/my/background_preciousmetal_nodetail.png");
     }
     .redspan{
         position: absolute;
@@ -64,10 +70,12 @@
         font-size: 0.12rem;
     }
     .btmItem>p>a:nth-child(1){
-        background-color: white;
+        background-color: lightgoldenrodyellow;
         padding-left:0.15rem;
         box-sizing: border-box;
         position: relative;
+        font-size: 0.14rem;
+        color: red;
     }
     .btmItem>p>a:nth-child(2){
         background-color: #00B7FF;

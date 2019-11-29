@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="Invite">
-            <span @click="goto"></span>
+            <span @click="go"></span>
             <p>邀请好友</p>
     </div>
         <div class="bg">
             <div class="world">
-            <img src="../../../public/assets/images/1.png" alt="logo">
+            <img src="../../../public/assets/images/my/1.png" alt="logo">
             </div>
             <span>5枚<p>夕夕币拿到手</p></span>
             </div>
@@ -17,8 +17,8 @@
     export default {
         name: "vheader",
         methods:{
-            goto(){
-                this.$router.replace("./index")
+            go(){
+                history.back()
             }
         }
     }
@@ -31,7 +31,7 @@
     justify-content: space-around;
     width: 100%;
     height: 0.6rem;
-    background-image: url("../../../public/assets/images/title_bar_bg.png");
+    background-image: url("../../../public/assets/images/my/title_bar_bg.png");
     background-size: 100% 100%;
 }
 .Invite span{
@@ -40,7 +40,7 @@
     position: absolute;
     left: 0.01rem;
     top: 0.15rem;
-    background-image: url("../../../public/assets/images/arrow_back.png");
+    background-image: url("../../../public/assets/images/my/arrow_back.png");
     background-size: 100% 100%;
 }
     .Invite p{
@@ -55,7 +55,7 @@
         display: block;
         width: 100%;
         height: 1rem;
-        background-image: url("../../../public/assets/images/draw_rule_background.png");
+        background-image: url("../../../public/assets/images/my/draw_rule_background.png");
         background-size: 3.75rem 4.55rem;
         position: relative;
         background-repeat: no-repeat;

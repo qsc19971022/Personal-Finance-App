@@ -64,8 +64,8 @@
 <style scoped>
     .counter-cun1main{
         font-size: 0.16rem;
-        margin:0.05rem 0.1rem;
-        border-top: 0.005rem solid black ;
+        margin:0.55rem 0.1rem;
+        border-top: 0.005rem solid rgb(203,203,203) ;
     }
     .counter-cun1main>p{
         display: flex;
@@ -74,7 +74,7 @@
         line-height: 0.5rem;
         padding: 0 0.1rem;
         box-sizing: border-box;
-        border: 0.005rem solid black ;
+        border: 0.005rem solid rgb(203,203,203) ;
         border-top:none;
     }
     .counter-cun1main>p>select{
@@ -82,7 +82,7 @@
     }
 
     .counter-cun1main>p:nth-of-type(6){
-        border-top: 0.005rem solid black ;
+        border-top: 0.005rem solid rgb(203,203,203) ;
     }
     .counter-cun1main>p:last-child{
         border:none;
@@ -102,17 +102,17 @@
         display: inline-block;
         width: 1.2rem;
         height: 0.4rem;
-        background-color: #00B7FF;
+        background-color:  rgb(98,169,206);
         text-align: center;
         line-height: 0.4rem;
         color:white;
     }
     .counter-cun1main>p:nth-of-type(4)>input,.counter-cun1main>p:nth-of-type(5)>input{
-        width:0.7rem;
+        width:1rem;
         height:0.3rem;
         margin-top: 0.1rem;
         text-align: right;
-        margin-left: 1.9rem;
+        margin-left: 1.6rem;
     }
     .counter-cun1main>p:nth-of-type(4)>input:hover,.counter-cun1main>p:nth-of-type(5)>input:hover{
         border:orange 0.005rem solid;

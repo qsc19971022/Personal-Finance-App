@@ -1,7 +1,7 @@
 <template>
     <div>
         <gift-header></gift-header>
-        <gift-newbtm :key="i" v-for="(btm,i) in giftInfo.btms" :data="btm"></gift-newbtm>
+        <gift-newbtm :key="i" v-for="(btm,i) in giftInfo.product_list" :data="btm" :bdx="i"></gift-newbtm>
     </div>
 </template>
 

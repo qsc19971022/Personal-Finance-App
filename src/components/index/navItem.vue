@@ -1,5 +1,5 @@
 <template>
-    <div class="index-nav-item" @click="jump">
+    <div class="index-nav-item" @click.prevent="jump">
         <a href="#">
             <img :src="data.pic">
             <p>{{data.name}}</p>
@@ -8,6 +8,9 @@
 </template>
 
 <script>
+    import Vue from "vue";
+    import { Dialog } from 'vant';
+    Vue.use(Dialog)
     export default {
         name: "navItem",
         props:["data","nid"],
@@ -35,15 +38,25 @@
                     location.href = '#/BindingCard'
                 }else if(this.nid ==3){
                     location.href = '#/gift'
-                }else if(this.nid ==6){
+                }else if(this.nid ==4){
+                    location.href = '#/term'
+                }else if(this.nid ==5){
+                    location.href = '#/bankSelection'
+                } else if(this.nid ==6){
                     location.href = '#/balance'
+                }else if(this.nid ==7){
+                    location.href = '#/cashbook'
                 }else if(this.nid ==8){
                     location.href = '#/counter'
                 }else if(this.nid ==10){
                     location.href = '#/vipactivities'
                 }
             }else{
-                    location.href = "#/login";
+                    Dialog.alert({
+                        message: '请先登录'
+                    }).then(() => {
+                        location.href = "#/login";
+                    });
                 }
             }
         },

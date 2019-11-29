@@ -1,6 +1,6 @@
 <template>
     <div class="bal">
-        <img src="../../../public/assets/images/balance/0191121102229.png">
+        <img @click="goback" src="../../../public/assets/images/balance/0191121102229.png">
         <h1>余 额 多</h1>
         <p>会 赚 钱 的 零 钱 包</p>
         <div class="con">
@@ -22,7 +22,12 @@
 
 <script>
 export default {
-    name:"balance-header"
+    name:"balance-header",
+    methods:{
+        goback(){
+            this.$router.push("/index")
+        }
+    }
 }
 </script>
 
@@ -57,6 +62,7 @@ export default {
 }
 .con1 img{
     width: 0.18rem;
+    height: 0.18rem;
 }
 .con1{
     display: flex;

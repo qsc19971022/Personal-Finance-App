@@ -1,12 +1,18 @@
 <template>
     <div class="log-header">
+        <img @click="goback" src="../../../public/assets/images/balance/arrow_back.png">
         <p>登录</p>
     </div>
 </template>
 
 <script>
 export default {
-    name:"login-header"
+    name:"login-header",
+    methods:{
+        goback(){
+            this.$router.go(-1)
+        }
+    }
 }
 </script>
 
@@ -17,8 +23,12 @@ export default {
     background-size: 100% 100%;
     height: 1.8rem;
 }
-.log-header>p:nth-child(1){
-    padding-top: 0.4rem;
+.log-header>img:nth-child(1){
+    width: 0.5rem;
+    padding-left: 0.15rem;
+    padding-top: 0.2rem;
+}
+.log-header>p:nth-child(2){
     text-align: center;
     color: white
 }

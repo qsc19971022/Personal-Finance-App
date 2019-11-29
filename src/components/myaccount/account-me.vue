@@ -1,8 +1,8 @@
 <template>
-    <div class="account_me">
-        <img :src="pic" @click="sendFile">
+    <div class="account_me" v-if="data">
+        <img :src="data.user_portrait">
         <div class="account_info">
-            <p>{{account}}</p>
+            <p>{{data.user_name}}</p>
             <p>{{tel}}</p>
         </div>
         <p><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_15.png"></p>
@@ -12,13 +12,14 @@
 <script>
     export default {
         name: "account-me",
+        props:["data"],
         data(){
             return{
                 CardId:"",
                 Carddes:"未开通银行存管账户",
                 account:"",
-                tel:'12345678901',
-                pic:'http://39.107.245.176/images/info/Screenshot_20191121_090552_com.xzck_12.png'
+                tel:'',
+                "data1":{"user_portrait":'http://39.107.245.176/images/info/Screenshot_20191121_090552_com.xzck_12.png'}
             }
         },
         methods:{
@@ -30,10 +31,8 @@
                 }
             },
             changeTel(){
-                this.tel=this.tel.substr(0,3)+"****"+this.tel.substr(7);
-            },
-            sendFile(){
-                location.href = "#/newImg"
+                let tele=localStorage.getItem('user');
+                this.tel=tele.substr(0,3)+"****"+tele.substr(7);
             }
         },
         mounted() {
@@ -61,6 +60,7 @@
 }
 .account_me>img{
     width: 0.6rem;
+    border-radius: 50%;
     height: 0.6rem;
 }
 .account_me>p>img{
