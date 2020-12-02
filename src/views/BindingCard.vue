@@ -1,9 +1,26 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-02 10:16:40
+ * @LastEditTime: 2020-02-24 11:49:05
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/views/BindingCard.vue
+ -->
 <template>
-    <div class="bind" v-if="CardInfo">
-        <BingHead></BingHead>
-        <bindcon :data1="CardInfo"></bindcon>
-        <button @click="go">添加银行卡</button>
-        <bingfoot></bingfoot>
+    <div>
+
+        <div class="bind" v-if="CardInfo.length>=0">
+            <BingHead></BingHead>
+            <bindcon :data1="CardInfo"></bindcon>
+            <button @click="go">添加银行卡</button>
+            <bingfoot></bingfoot>
+        </div>
+        <div class="bind" v-else>
+            <BingHead></BingHead>
+            <bindcon></bindcon>
+            <button @click="go">添加银行卡</button>
+            <bingfoot></bingfoot>
+        </div>
     </div>
 </template>
 
@@ -28,8 +45,8 @@
             async _initPageInfo(){
                 let user_phone=localStorage.getItem("user");
                 let data=await cardinfo.getInfo1Page(user_phone);
-                this.CardInfo=data.data;
-                console.log(this.CardInfo);
+                this.CardInfo=data;
+                console.log(data);
             },
             go(){
                 this.$router.push("/BingCard");

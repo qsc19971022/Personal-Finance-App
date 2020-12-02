@@ -3,7 +3,7 @@
     <top-bank></top-bank>
     <list-bank></list-bank>
     <footer-bank :key="sid" :data="item" :sid="sid" v-for="(item,sid) 
-	in bankseletionInfo.fund"></footer-bank>
+	in bankseletionInfo.rateinformation"></footer-bank>
   </div>
 </template>
 

@@ -1,8 +1,17 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-02 01:03:02
+ * @LastEditTime: 2020-02-18 16:18:19
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/components/myaccount/account-me.vue
+ -->
 <template>
     <div class="account_me" v-if="data">
-        <img :src="data.user_portrait">
+        <img v-if="data.user_portrait==''" :src="data1.user_portrait" @click="jump">
+        <img  v-else :src="data.img" @click="jump">
         <div class="account_info">
-            <p>{{data.user_name}}</p>
+            <p ref="username">{{data.name}}</p>
             <p>{{tel}}</p>
         </div>
         <p><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_15.png"></p>
@@ -33,6 +42,9 @@
             changeTel(){
                 let tele=localStorage.getItem('user');
                 this.tel=tele.substr(0,3)+"****"+tele.substr(7);
+            },
+            jump(){
+                location.href = "#/newImg"
             }
         },
         mounted() {

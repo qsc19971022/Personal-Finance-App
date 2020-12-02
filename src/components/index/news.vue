@@ -1,6 +1,6 @@
 <template>
     <div class="index-news" >
-        <div class="index-top-title"><img :src="data.img" alt=""></div>
+        <div class="index-top-title"><img src="http://money.woftsun.com/res/img/news1.png" alt=""></div>
         <div class="index-top-news">
             <p>{{data.new1}}</p>
             <p>{{data.new2}}</p>

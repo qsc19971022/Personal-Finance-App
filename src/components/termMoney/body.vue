@@ -1,16 +1,16 @@
 <template>
     <div class="termbody">
         <p>为您推荐</p>
-        <div class="bood" :key="i" v-for="(u,i) in data.all_product">
+        <div class="bood" :key="i" v-for="(u,i) in data">
             <p>{{u.product_name}}</p>
             <div class="llx">
                 <div>
                     <p class="sgf">业绩比较基准</p>
-                    <p class="rf">{{u.rate}}%</p>
+                    <p class="rf">{{u.product_rate}}%</p>
                 </div>
                 <div>
                     <p class="sgf">期限</p>
-                    <p>最短{{u.trade}}天</p>
+                    <p>最短{{u.product_trade}}天</p>
                 </div>
                 <div>
                     <p class="sgf">起购金额</p>
@@ -30,7 +30,7 @@ export default {
     props:["data"],
     methods:{
         list(i){
-            let dat = this.data.all_product[i].product_name
+            let dat = this.data[i].product_name
             this.$router.push(`/product/detail?name=${dat}`)
         }
     }

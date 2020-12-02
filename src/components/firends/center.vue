@@ -5,7 +5,7 @@
             <span class="str_right"><img src="../../../public/assets/images/my/3.png" alt="world"></span>
         </div>
         <div class="code">
-                <span class="red_code"><a href="#" @click="copy" ref="local">http://localhost:8080/#/reg?id={{user}}</a><img src="../../../public/assets/images/my/salary_title_background.png" alt="logo"></span>
+                <span class="red_code"><a href="#" @click="copy" ref="local">http://money.woftsun.com/reg?id={{user}}</a><img src="../../../public/assets/images/my/salary_title_background.png" alt="logo"></span>
                 <span class="cde"><a href="#" @click="showPopup">{{this.btnName}}</a><img src="../../../public/assets/images/my/querymore_dialog_btn.png" alt="logo"></span>
     </div>
         <h5>规则说明</h5>
@@ -66,7 +66,7 @@
 <style scoped>
 .bg_img{
     width: 100%;
-    height: 5.4rem;
+    height: 100vh;
     background-image: url("../../../public/assets/images/my/background_menu_adv.png");
     background-size: 100% 100%;
 }

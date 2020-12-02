@@ -10,7 +10,7 @@ export default {
     name:"login-header",
     methods:{
         goback(){
-            this.$router.go(-1)
+            this.$router.push("/index")
         }
     }
 }

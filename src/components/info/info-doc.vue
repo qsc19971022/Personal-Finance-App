@@ -1,6 +1,14 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-21 14:03:30
+ * @LastEditTime: 2020-02-26 10:27:52
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/components/info/info-doc.vue
+ -->
 <template>
     <div class="info-docs" v-if="data">
-        <div :class="{active:number==index}" @click="show(index)" v-for="(val,index) in  data" :key="index">{{val}}</div>
+        <div :class="{active:number==index}" @click="show(index)" v-for="(val,index) in  data" :key="index">{{val.val}}</div>
     </div>
 </template>
 

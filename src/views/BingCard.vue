@@ -21,14 +21,15 @@
         },
         methods:{
             goprev(){
-                fetch('http://49.234.85.212:8080/bank/info/',{
+                let user = localStorage.getItem("user");
+                fetch('http://test.woftsun.com:3000/bank/add/',{
                     method:"POST",
                     headers:{
                         "Content-Type":"application/json"
                     },
                     body:JSON.stringify({
                         bank_id:this.bank_id,
-                        user_phone:"17802926563"
+                        user:user
                     })
                 }).then(res=>res.json()).then((d)=>{
                         //alert(d.msg);

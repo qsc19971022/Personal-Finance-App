@@ -1,7 +1,7 @@
 <template>
     <div class="counter-headerBtn">
-        <a href="#"><img src="../../../public/assets/images/product/product-topbtn2.png" alt=""><span>日历</span></a>
-        <a href="#"><img src="../../../public/assets/images/product/product-topbtn1.png" alt=""><span>添加</span></a>
+        <a href="#/index"><img src="../../../public/assets/images/product/product-topbtn2.png" alt=""><span>日历</span></a>
+        <a href="#/term"><img src="../../../public/assets/images/product/product-topbtn1.png" alt=""><span>添加</span></a>
     </div>
 </template>
 
@@ -34,7 +34,7 @@
         font-size: 0.16rem;
         width:0.5rem;
         position: absolute;
-        left:0.3rem;
+        left:0.25rem;
         top:0rem;
         color:red;
     }

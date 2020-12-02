@@ -1,9 +1,9 @@
 <template>
     <div class="bind-con" v-if="data1">
-        <a href="#/BindingCard"  class="bind-option" v-for="(val,index) in data1"  :style="bgStyle[index]" :key="index">
+        <a class="bind-option" v-for="(val,index) in data1" @click="CardId(index)" :style="bgStyle[index]" :key="index">
             <img :src="val.bank_logo">
             <div class="bind-option-con">
-                <p>{{val.bank_name}}</p>{{val.bank_type}}
+                <p>{{val.bank}}</p>{{val.bank_type}}
             </div>
             <p>{{val.bank_id}}</p>
         </a>
@@ -52,6 +52,19 @@
                     let str=this.data1[i].bank_id;
                     str="**** **** **** "+str.substr(str.length-4);
                     this.data1[i].bank_id=str;
+                }
+            },
+            CardId(index){
+                let flag1=this.$route.query.flag;
+                console.log(this.$route.query.flag)
+                let cardn=localStorage.getItem("bank_list");
+                let data1=JSON.parse(cardn)
+                let Cardname=data1[index].bank_name;
+                localStorage.setItem("bkname",Cardname)
+                if(flag1=="充值"){
+                    this.$router.push('/setmoney');
+                }else{
+                    this.$router.push('/getmoney');
                 }
             }
         },

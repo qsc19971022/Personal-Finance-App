@@ -1,7 +1,7 @@
 <template>
     <div class="account-foot" v-if="data">
         <account-top :data="data"></account-top>
-        <account-mid></account-mid>
+        <account-mid :data="data.user_bank_list"></account-mid>
     </div>
 </template>
 

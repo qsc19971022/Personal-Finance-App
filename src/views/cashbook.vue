@@ -1,7 +1,10 @@
 <template>
     <div>
         <index-cashbook-head v-if="cashbook" :dat="cashbook"></index-cashbook-head>
-        <div class="cashddbtm">
+        <div class="cashddbtms" v-if="cashbook.mon_money_jia==0&&cashbook.mon_money_pay==0">
+                <p class="cashBtn" ref="jump" @click="jump">立即购买</p>
+        </div>
+        <div class="cashddbtm" v-else>
             <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
                 <index-cashbook-btm v-for="(bt,i) in cashbook.data" :key="i" :da="bt" :i="i"></index-cashbook-btm>
             </van-pull-refresh>
@@ -45,6 +48,9 @@
                     // this.$toast('刷新成功');
                     this.isLoading = false;
                 }, 500);
+            },
+            jump(){
+                location.href = "#/product"
             }
         },
         beforeMount() {
@@ -57,5 +63,17 @@
 <style scoped>
     .cashddbtm{
         margin-top: 1.8rem;
+    }
+    .cashddbtms{
+        position: fixed;
+        left:1.5rem;
+        bottom:3.2rem;
+    }
+    .cashBtn{
+        width: 1rem;
+        height: 0.36rem;
+        text-align: center;
+        line-height: 0.36rem;
+        background-color: skyblue;
     }
 </style>

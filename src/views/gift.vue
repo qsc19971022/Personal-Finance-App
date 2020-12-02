@@ -1,7 +1,15 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-28 21:14:34
+ * @LastEditTime: 2020-03-05 14:43:38
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/views/gift.vue
+ -->
 <template>
     <div>
         <gift-header></gift-header>
-        <gift-newbtm :key="i" v-for="(btm,i) in giftInfo.product_list" :data="btm" :bdx="i"></gift-newbtm>
+        <gift-newbtm :key="i" v-for="(btm,i) in giftInfo" :data="btm" :bdx="i"></gift-newbtm>
     </div>
 </template>
 

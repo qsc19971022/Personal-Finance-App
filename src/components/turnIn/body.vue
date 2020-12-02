@@ -4,7 +4,7 @@
             <img ref="q" src="../../../public/assets/images/balance/0191122151358.png">
             <div class="bst">
                 <p ref="w">账户余额</p>
-                <p ref="e">{{data.user_account_balance}}元</p>
+                <p ref="e">{{data.money}}元</p>
             </div>
             <span>></span>
         </div>
@@ -23,13 +23,13 @@
             <p class="chos">选择付款方式</p>
             <div class="ffban" @click="bmo">
                 <img ref="r" src="../../../public/assets/images/balance/0191122151358.png">
-                <p ref="t">账户余额（剩余：￥<span ref="y">{{data.user_account_balance}}元</span>）</p>
+                <p ref="t">账户余额（剩余：￥<span ref="y">{{data.balance}}元</span>）</p>
             </div>
-            <div :key="i" v-for="(u,i) in data.user_bank_cards">
+            <div :key="i" v-for="(u,i) in data.bank_card">
             <div class="ffban" @click="clse(i)">
-                <img ref="qq" :src="u.logo">
+                <img ref="qq" :src="u.bank_logo">
                 <div class="fbn">
-                    <p ref="ww">{{u.bank_name}}</p>
+                    <p ref="ww">{{u.bank}}</p>
                     <p ref="ee">银行单笔限额20000.00元</p>
                 </div>    
             </div>

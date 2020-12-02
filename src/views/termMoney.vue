@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-26 19:42:54
+ * @LastEditTime: 2020-02-24 16:39:36
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/views/termMoney.vue
+ -->
 <template>
     <div>
         <term-money-header></term-money-header>
@@ -23,7 +31,8 @@ export default {
     methods:{ 
         _initData(){
             termApi.getTermInfo(data=>{
-                this.termInfo = data
+                this.termInfo = data;
+                console.log(data);
             })
         }
     },

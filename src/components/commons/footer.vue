@@ -75,7 +75,7 @@
         text-align: center;
         color: #999;
         flex: 1 1 auto;
-        font-size: 0.06rem;
+        font-size: 0.12rem;
     }
     .foot-con{
         width: 100%;

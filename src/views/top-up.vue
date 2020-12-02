@@ -1,8 +1,11 @@
 <template>
     <div class="topUp">
-        <topup-header></topup-header>
-        <input type="text" class="topUp-num" placeholder="请输入充值号码" @blur="query" v-model="tel">
-        <p class="topUp-place">号码归属地:<span class="place-item">甘肃天水</span>运营商:<span class="topUp-company">中国电信</span></p>
+      <div class="topUp-header">
+        <a href="#/index"></a>
+        <p>手机充值</p>
+        </div>
+        <input type="text" class="topUp-num" placeholder="请输入充值号码"  @blur="query" v-model="tel">
+        <p class="topUp-place">号码归属地:<span class="place-item"></span>运营商:<span class="topUp-company"></span></p>
         <p class="topUp-title">充话费</p>
         <div class="phone-list">
             <div>
@@ -33,33 +36,53 @@
             <p class="topUp-commit-way" @click="checkWay">付款方式:<span ref="yue">余额</span></p>
             <div :key="i" v-for="(u,i) in data">
                 <div class="topUp-commit-item" @click="checked(i)">
-                    <img ref="pic" :src="u.logo">
-                    <p ref="title">{{u.bank_name}}</p>
+                    <img ref="pic" :src="u.bank_logo">
+                    <p ref="title">{{u.bank}}</p>
                 </div>
             </div>
             <div style="width: 100%;text-align: center"><button class="topUp-commit-pay" @click="pay">付款</button></div>
+        </van-popup>
+        <van-popup v-model="show1" class="popup-pwd" position="bottom" :style="{ height: '42%',backgroundColor:'rgb(249,249,249)'}"><van-password-input
+                :value="value"
+                info="密码为 6 位数字"
+                :focused="showKeyboard"
+                @focus="showKeyboard = true"
+                :error-info = 'info'
+                ref="tip"
+        />
+            <van-number-keyboard
+                    :show="showKeyboard"
+                    theme="custom"
+                    extra-key="."
+                    close-button-text="完成"
+                    @input="onInput"
+                    @delete="onDelete"
+            />
         </van-popup>
     </div>
 </template>
 
 <script>
-    import header from "../components/topUp/header";
     import $ from 'jquery';
     import Vue from 'vue';
-    import { Popup,Dialog } from 'vant';
-    Vue.use(Popup,Dialog)
+    import { Popup,Dialog,PasswordInput, NumberKeyboard } from 'vant';
+    Vue.use(Popup,Dialog).use(PasswordInput).use(NumberKeyboard);
     export default {
         name: "top-up",
         data(){
           return {
-              tel:'15349387633',
+              tel:'',
               money:'',
               province:'',
               city:'',
-              company:'haha',
+              company:'',
               show:false,
+              show1:false,
               data:'',
-              wayName:'余额'
+              wayName:'余额',
+              value: '',
+              showKeyboard: true,
+              info:'密码为6位数字'
           }
         },
         methods:{
@@ -81,7 +104,6 @@
                 });
         },
             phone(){
-                //this.query();
                 let flag = $(".phone-active").length;
                 if(flag == 1){
                     this.company = $(".place-item").html();
@@ -93,12 +115,6 @@
                     let ls = localStorage;
                     let ls_user = ls.getItem("user");
                     console.log(ls_user);
-                    fetch('http://10.35.167.36:8080/phone/?phone='+13259775913,{
-                        method:"GET",
-                    }).then(res=>res.json().then(cb=>{
-                            console.log(cb);
-                        })
-                    )
                 }else{
                     Dialog.alert({
                         message: '请选择充值金额'
@@ -106,57 +122,96 @@
                         //close
                     });
                 }
-
             },
             checkWay(){
                 let user = localStorage.getItem("user");
                 $(".topUp-commit-item").css({display:"block"});
-                fetch("http://49.234.85.212:8080/out_or_in/?user="+user+'&flag=转出').then(res=>{
+                fetch("http://test.woftsun.com:3000/bank/get?user="+user).then(res=>{
                     res.json().then(cb=>{
-                        console.log(cb);
-                        this.data = cb.user_bank_cards;
+                        this.data = cb;
+                        let id = cb.length;
+                      for(let i = 0; i<=id-1; i++){
+                            cb[i].bank_id = cb[i].bank_id.slice(-4);
+                            cb[i].bank = cb[i].bank + '(' + cb[i].bank_id + ')';
+                     }
                     });
                 })
             },
             checked(i){
                 console.log(i)
-                this.wayName = this.data[i].bank_name;
+                this.wayName = this.data[i].bank;
                 this.$refs.yue.innerHTML =this.wayName;
                 $(".topUp-commit-item").css({display:"none"});
 
             },
             pay(){
-                fetch('http://49.234.85.212:8080/phone_pay/',{
-                    method:"POST",
-                    headers:{'Content-Type':'application/json;charset=UTF-8'},
-                    body:JSON.stringify({
-                        phone:localStorage.getItem("user"),
-                        pay_phone:this.tel,
-                        pay_money:this.money,
-                        way:this.wayName
-                    })
-                }).then(res=>res.json().then(cb=>{
-                    Dialog.alert({
-                        message: cb.msg
-                    }).then(() => {
-                        //close
-                    });
-                    })
-                );
-            }
+                this.show1 = true;
+                this.show = false;
+            },
+            onInput(key) {
+                this.value = (this.value + key).slice(0, 6);
+            },
+            onDelete() {
+                this.value = this.value.slice(0, this.value.length - 1);
+            },
     },
+        watch:{
+            value(n){
+                let oLength = n.length;
+                if(oLength == 6){
+                    fetch('http://test.woftsun.com:3000/user/compare/',{
+                        method:"POST",
+                        headers:{'Content-Type':'application/json;charset=UTF-8'},
+                        body:JSON.stringify({
+                            user:localStorage.getItem("user"),
+                            paypwd:this.value,
+                        })
+                    }).then(res=>res.json().then(cb=>{
+                            console.log(cb.status);
+                            if (cb.status == 0){
+                                fetch('http://test.woftsun.com:3000/user/pay/',{
+                                    method:"POST",
+                                    headers:{'Content-Type':'application/json;charset=UTF-8'},
+                                    body:JSON.stringify({
+                                        user:localStorage.getItem("user"),
+                                        phone:this.tel,
+                                        money:parseInt(this.money),
+                                        way:this.wayName
+                                    })
+                                }).then(res=>res.json().then(cb=>{
+                                        console.log(cb);
+                                        Dialog.alert({
+                                            message: cb.msg
+                                        }).then(() => {
+                                            //location.href = 'javascript:history.go(-2)'
+                                            this.$router.replace('topUp');
+                                            this.show1 = false;
+                                        });
+                                    })
+                                );
+                            }else{
+                                this.info = '支付密码输入错误'
+                            }
+
+                        })
+                    );
+                }else {
+                    this.info = '请继续输入密码'
+                }
+    }
+        },
         mounted(){
-            this.tel = localStorage.getItem("phone");
+            this.tel = localStorage.getItem("user");
             $(".phone-list>div").click(function () {
                 $(this).addClass("phone-active").siblings().removeClass("phone-active");
                 let price = $(".phone-active>p>span").html();
                 $(".topUp-price").html(parseInt(price).toFixed(2));
             });
+            console.log($(".van-password-input__security"))
         },
         components:{
-            'topup-header':header,
             [Popup.name]:Popup
-        }
+        },
     }
 </script>
 
@@ -165,6 +220,31 @@
         width: 100%;
         height: 100%;
         /*background-color: rgb(244,244,244);*/
+    }
+     .topUp-header{
+        width: 100%;
+        height: 0.5rem;
+        background-color: white;
+        position: relative;
+        border-bottom: 2px solid rgb(220,220,220);
+    }
+    .topUp-header>a{
+        display: block;
+        line-height: 0.5rem;
+        width: 0.3rem;
+        height: 0.3rem;
+        position: absolute;
+        top: 0.1rem;
+        left: 0.1rem;
+        background-image: url("../../public/assets/images/index/return.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 0.24rem 0.24rem;
+    }
+    .topUp-header>p{
+        font-size: 0.15rem;
+        text-align: center;
+        line-height: 0.5rem;
     }
     .topUp-num{
         width: 100%;
@@ -349,5 +429,9 @@
         height: 0.38rem;
         line-height: 0.38rem;
         margin-left: 0.16rem;
+    }
+    .popup-pwd{
+        box-sizing: border-box;
+        padding-top: 0.3rem;
     }
 </style>

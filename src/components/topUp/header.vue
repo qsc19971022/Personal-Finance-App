@@ -1,6 +1,6 @@
 <template>
     <div class="topUp-header">
-        <a href="javascript:history.go(-2)"></a>
+        <a href="#/index"></a>
         <p>手机充值</p>
     </div>
 </template>

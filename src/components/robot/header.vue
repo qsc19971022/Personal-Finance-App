@@ -1,6 +1,6 @@
 <template>
     <div class="robot-header">
-        <a href="javascript:history.go(-2)"></a>
+        <a href="javascript:history.back()"></a>
         <p>钱小夕</p>
     </div>
 </template>

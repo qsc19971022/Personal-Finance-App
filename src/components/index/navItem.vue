@@ -17,17 +17,16 @@
         methods:{
             jump(){
                 if(localStorage.getItem("user")){
+                    let user = localStorage.getItem("user");
                 if(this.nid==9){
-                    location.href = "#/topUp";
-                        let ls = localStorage;
-                        let ls_user = ls.getItem("user");
-                        console.log(ls_user);
-                        fetch('http://10.35.167.36:8080/phone/?phone='+13259775913,{
+                        fetch('http://49.234.85.212:80/phone/?phone='+user,{
                             method:"GET",
                         }).then(res=>res.json().then(cb=>{
-                                ls.setItem("phone",cb.phone);
+                            console.log(cb);
+                                localStorage.setItem("phone",cb.phone);
                             })
                         )
+                    location.href = "#/topUp";
                 }else if(this.nid ==11){
                     location.href = '#/robot'
                 }else if(this.nid ==0){
@@ -35,7 +34,7 @@
                 }else if(this.nid ==1){
                     location.href = '#/Invite_friends'
                 }else if(this.nid ==2){
-                    location.href = '#/BindingCard'
+                    location.href = '#/BingCard'
                 }else if(this.nid ==3){
                     location.href = '#/gift'
                 }else if(this.nid ==4){

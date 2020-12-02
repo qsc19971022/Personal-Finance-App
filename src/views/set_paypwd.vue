@@ -2,17 +2,17 @@
     <div class="setP">
         <p>设置支付密码</p>
         <span class="black" @click="go"></span>
-        <input type="password" placeholder="输入旧密码" v-model="oldpwd" class="tell" @change="ckp">
+        <input type="password" placeholder="输入旧密码" v-model="oldpaypwd" class="tell" @change="ckp">
         <input type="password" placeholder="输入新密码" v-model="mkpass" class="tell" @change="ckp2">
         <input type="password" placeholder="确认新密码" v-model="pass" class="tell" @blur="ckm">
-        <p>密码长度6-32位，须包含数字、字母、符号至少2种或以上元素</p>
+        <p>密码仅限6位纯数字元素</p>
         <button class="btn" @click="makeSure">确认提交</button>
         <span id="pan1" ref="n1"></span><span id="pan3" ref="n3"></span><span id="pan2" ref="n2"></span>
     </div>
 </template>
 
 <script>
-    import Set from '../apis/setpaypwd'
+    import Setpay from '../apis/setpaypwd'
     export default {
         name:"set-pass",
         data(){
@@ -22,14 +22,14 @@
                 flagPass:false,
                 flagmkPass:false,
                 flagsPass:false,
-                oldpwd:""
+                oldpaypwd:""
             }
         },
         methods:{
             ckp(){
                 var regPass = /^\d{6}$/;
-                if(regPass.test(this.oldpwd)){
-                    this.flagPass = true
+                if(regPass.test(this.oldpaypwd)){
+                    this.flagPass = true;
                     this.$refs.n1.innerHTML = ""
                 }else{
                     this.flagPass = false;
@@ -57,14 +57,14 @@
             },
             makeSure(){
                 if(this.flagPass && this.flagmkPass && this.flagsPass){
-                    let tel = localStorage.getItem("user")
-                    Set.checkUserSet(tel,this.oldpwd,this.pass,(data)=>{
+                    let tel = localStorage.getItem("user");
+                    Setpay.checkUserSet(tel,this.oldpaypwd,this.pass,(data)=>{
                         window.console.log((data));
-                        if (data.status==0){
-                            alert("密码修改成功")
-                            this.$router.push("/")
+                        if (data.status==3){
+                            alert(data.msg)
+                            this.$router.push("/");
                         }else {
-                            alert("密码修改失败")
+                            alert(data.msg);
                         }
                     })
                 }

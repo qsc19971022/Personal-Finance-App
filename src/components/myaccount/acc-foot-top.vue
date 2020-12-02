@@ -4,7 +4,7 @@
         <div class="account-money">
             <div class="account-money-top">
                 <h3 class="account-total">账户总资产(元)<span class="ac-show" :class="{ac_open:!flag}" @click="Openeye"></span></h3>
-                <h1 v-if="flag">{{data.u_account_money}}</h1>
+                <h1 v-if="flag">{{data.money}}</h1>
                 <h1 v-else>****</h1>
                 <a href="#/"><img src="../../../public/assets/images/info/Screenshot_20191118_221356_com.xzck_03.png"></a>
             </div>

@@ -1,5 +1,5 @@
 <template>
-    <div  v-if="data">
+    <div  v-if="data" class="info_marbot">
         <a   class="info-con"  v-for="(val,index) in data" :key="index" @click="PostId(val.info_id)">
             <div class="info-con-con">
                 <p>{{val.title}}</p>
@@ -52,6 +52,9 @@
 </script>
 
 <style scoped>
+    .info_marbot{
+        margin-bottom: 0.5rem;
+    }
 .info-con{
     padding: 0.1rem;
     width: 100%;

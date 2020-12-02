@@ -1,14 +1,14 @@
 <template>
     <div class="btmItem" @click="productDetail">
-        <p><a href=""><span class="redspan"></span>{{data.product_name}}</a><a href="" v-if="data.is_novice">{{data.is_novice}}</a><a href="" v-if="data.is_novice">2</a></p>
+        <p><a href="#"><span class="redspan"></span>{{data.product_name}}</a><a href="#" ref="product2a" v-if="data.is_novice">新手标</a><a href="#" ref="product3a" v-if="data.id_saling">优选标</a></p>
         <div class="product-con">
             <div class="product-left">
-                <p><span>{{data.rate}}</span><span>%</span></p>
+                <p><span>{{data.product_rate}}</span><span>%</span></p>
                 <p>年化收益率</p>
                 <i></i>
             </div>
             <div class="product-right">
-                <p><span>项目期限</span><span>{{data.trade}} 天</span></p>
+                <p><span>项目期限</span><span>{{data.product_trade}} 天</span></p>
                 <p><span>剩余金额</span><span>{{data.pro_balance}}</span></p>
                 <span>一次性付息还本</span>
             </div>
@@ -28,7 +28,13 @@
         },
         methods:{
             productDetail(){
-                location.href=`#/product/detail?name=${this.data.product_name}`;
+                if(this.data.is_novice){
+                    let aa = "新手标";
+                    location.href=`#/product/detail?name=${this.data.product_name}&aa=${aa}`;
+                }else{
+                    let aa1 = "";
+                    location.href=`#/product/detail?name=${this.data.product_name}&aa=${aa1}`;
+                }
             }
         }
     }

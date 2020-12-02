@@ -27,14 +27,13 @@ export default {
     Receive() {
       if (this.flag == false) {
         alert("领取成功");
-        this.$refs.qu.innerHTML="已领取";
+        this.$refs.qu.innerHTML = "已领取";
         this.flag = true;
         let user = localStorage.getItem("user");
         vip.vip(user, this.data.vip_name, this.data.worth, data => {
           window.console.log(data);
         });
       } else {
-        
         alert("只能领取一次");
       }
     }
@@ -55,6 +54,7 @@ export default {
 }
 .tag {
   font-size: 0.4rem;
+  font-family: -webkit-pictograph;
 }
 .acticities-list {
   width: 100%;

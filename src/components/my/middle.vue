@@ -13,7 +13,10 @@
 
         <div class="bg_img" v-else>
         <div class="img_2" v-if="data1">
-                <img :src="data1.user_portrait" alt="logo" @click="gologo">
+<!--            <img v-if="data1.user_portrait==''" src="../../../public/assets/images/my/logo2.png" @click="gologo">-->
+<!--            <img  v-else :src="data1.user_portrait" @click="gologo">-->
+            <img  v-if="data1.user_portrait" :src="data1.user_portrait" alt="logo1" @click="gologo">
+            <img v-else :src="data.img" alt="logo2" @click="gologo">
                 <span class="num">{{user}}</span>
                 <span class="small_left"><img src="../../../public/assets/images/my/item_right_arrow.png" alt="logo"></span>
                 <span class="certification" @click="goto">专属客服</span>
@@ -22,7 +25,7 @@
             <div class="assets">
                 <p class="money">我的资产(元)</p>
                 <span :class="{eays1:flag1}"  class="eays" @click="showmoney"></span>
-                <span class="xing" v-if="flag1" >{{data.user_account_balance}}</span>
+                <span class="xing" v-if="flag1" >{{data.money}}</span>
                 <span class="xing" v-else>******</span>
                 <span class="jan"></span>
                 <p class="world_2">上述金融资产情况均为您昨日持有数据</p>
@@ -87,28 +90,31 @@
               this.$router.push("/newImg")
             },
             exit(){
-                    localStorage.removeItem("user");
-                     location.reload();
-                // let s=localStorage.getItem("user");
-                // fetch("http://49.234.85.212:8080/user/exit/",{
-                //     method:"POST",
-                //     headers:{
-                //         "Content-Type":"application/json"
-                //     },
-                //     body:JSON.stringify({
-                //         phone:s
-                //     })
-                //     }).then(res =>{
-                //     res.json().then(data=>{
-                //         console.log(data);
-                //         if (data.status==0){
-                //             localStorage.removeItem("user");
-                //              location.reload();
-                //         }else if (data.status==1){
-                //             alert("退出失败")
-                //         }
-                //     })
-                // })
+                // localStorage.removeItem("user");
+                //  location.reload();
+                let s=localStorage.getItem("user");
+                let token=localStorage.getItem("token");
+                fetch("http://49.234.85.212:8080/user/exit/",{
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        phone:s,
+                        token:token
+                    })
+                }).then(res =>{
+                    res.json().then(data=>{
+                        console.log(data);
+                        if (data.status==0){
+                            localStorage.removeItem("user");
+                            localStorage.removeItem("token");
+                            location.reload();
+                        }else if (data.status==1){
+                            alert("退出失败")
+                        }
+                    })
+                })
             },
             showmoney(){
                 if (this.flag1==false){
@@ -136,6 +142,7 @@
             if (this.user!=null){
                     this.show()
             }
+            console.log(this.data1.user_portrait);
         },
 
 
@@ -264,7 +271,8 @@
 .img_2 img{
     width: 100%;
     height: 100%;
-
+    margin-top: -0.06rem;
+    border-radius: 50%;
 }
 .img img{
     width: 100%;

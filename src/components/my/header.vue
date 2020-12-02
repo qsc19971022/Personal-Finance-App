@@ -3,7 +3,7 @@
     <header>
       <div class="top">
         <span class="top_icon"></span>
-        <p class="address">西安</p>
+        <p class="address" @click="position" ref="city">{{this.city}}</p>
         <span class="icon_1" @click="go"></span>
         <span class="icon_2"></span>
       </div>
@@ -12,12 +12,34 @@
 </template>
 
 <script>
+    import $ from "jquery";
     export default {
         name: "vheader",
+        data(){
+          return {
+              city:'获取定位'
+          }
+        },
       methods:{
         go(){
           this.$router.replace("./robot")
+        },
+        position(){
+          $.ajax({
+            type: "get",
+            url: 'http://api.map.baidu.com/location/ip?&ak=Q0y8wBpdIbMKwsGA91WcDZZkNdVyGvh2&coor=bd09ll',
+            dataType: "jsonp",
+            jsonp: "callback",
+            success: function(data) {
+              console.log(data.content.address_detail.city);
+              this.city = data.content.address_detail.city;
+             $(".address").html(this.city)
+            }
+          });
         }
+      },
+      beforeMount() {
+          //this.position();
       }
     }
 </script>

@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-02 11:32:30
+ * @LastEditTime: 2020-02-18 16:12:00
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/views/Myaccount.vue
+ -->
 <template>
     <div class="account" v-if="Info">
         <accountHead></accountHead>
@@ -32,7 +40,8 @@
                     alert(data.msg);
                 }
                 console.log(data);
-
+                let user_name = data.name;
+                localStorage.setItem("touxiang",user_name)
             },
         },
         async mounted() {

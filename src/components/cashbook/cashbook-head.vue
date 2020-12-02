@@ -3,15 +3,15 @@
         <index-cashbook-header class="cashbook-col" :data="data"></index-cashbook-header>
         <div class="cashbook-div">
             <div class="cashbook-div1">
-                <p class="cashbookp1" ref="cashbookp1">2019年</p>
+                <p class="cashbookp1" ref="cashbookp1">{{year}}年</p>
                 <div is-link @click="showPopup">
-                    <span class="cashbookdate" ref="cashbookdate">11</span><span class="cashbook-spans">月</span>
+                    <span class="cashbookdate" ref="cashbookdate">{{month}}</span><span class="cashbook-spans">月</span>
                 </div>
                 <van-popup v-model="show" class="van-pop">
                     <p class="selectmonth">选择月份</p>
                     <div class="alertbutton">
                         <p><button @click="jia1">+</button><button @click="jia2">+</button></p>
-                        <p><span class="selectmonths" ref="month">2019</span><span class="selectdays" ref="days">11</span></p>
+                        <p><span class="selectmonths" ref="month">2019</span><span class="selectdays" ref="days">12</span></p>
                         <p><button @click="jian1">-</button><button @click="jian2">-</button></p>
                         <p class="alertbtm"><span class="quxiao" @click="quxiao">取消</span><span class="queding" @click="queding">确定</span></p>
                     </div>
@@ -45,7 +45,9 @@
                 return{
                     show:false,
                     data:{
-                        "con":"记账本"
+                        "con":"记账本",
+                        "year":'',
+                        "month":''
                     }
                 }
             },
@@ -84,32 +86,35 @@
                 queding(){
                     this.show=false;
                     this.$refs.cashbookp1.innerHTML=this.$refs.month.innerHTML;
-                    // let year = this.$refs.cashbookp1.innerHTML;
+                    let year = this.$refs.cashbookp1.innerHTML;
                     this.$refs.cashbookdate.innerHTML=this.$refs.days.innerHTML;
-                    // let month = this.$refs.cashbookdate.innerHTML;
-                    // let phone = localStorage.getItem("user");
-                    // setCashbook.checkUserSet(year,month,phone,(datas)=>{
+                    let month = this.$refs.cashbookdate.innerHTML;
+                    let phone = localStorage.getItem("user");
+                    setCashbook.checkUserSet(year,month,phone,(datas)=>{
+                        console.log(datas);
+                        this.$bus.$emit("click1",datas)
+                    })
+                    // setCashbook.checkUserSet(datas=>{
                     //     console.log(datas);
                     //     this.$bus.$emit("click1",datas)
                     // })
-                    setCashbook.checkUserSet(datas=>{
-                        console.log(datas);
-                        this.$bus.$emit("click1",datas)
-                    })
                 },
                 xxx(){
-                    // let year = this.$refs.cashbookp1.innerHTML;
-                    // let month = this.$refs.cashbookdate.innerHTML;
-                    // let phone = localStorage.getItem("user");
-                    // console.log(year,month,phone);
-                    // setCashbook.checkUserSet(year,month,phone,(datas)=>{
-                    //     console.log(datas);
-                    //     this.$bus.$emit("click1",datas)
-                    // });
-                    setCashbook.checkUserSet(datas=>{
+                    let date = new Date()
+                    let year = date.getFullYear();
+                    this.year = year;
+                    let month = date.getMonth()+1;
+                    this.month=month;
+                    let phone = localStorage.getItem("user");
+                    console.log(year,month,phone);
+                    setCashbook.checkUserSet(year,month,phone,(datas)=>{
                         console.log(datas);
                         this.$bus.$emit("click1",datas)
-                    })
+                    });
+                    // setCashbook.checkUserSet(datas=>{
+                    //     console.log(datas);
+                    //     this.$bus.$emit("click1",datas)
+                    // })
                 }
             },
             beforeMount() {
@@ -132,7 +137,7 @@
             width:0.3rem;
             font-size:0.14rem;
             position: absolute;
-            left:0.8rem;
+            left:0.9rem;
             top:1rem;
             background-image: url("../../../public/assets/images/product/zf.png");
             background-repeat: no-repeat;
@@ -143,10 +148,10 @@
         }
         .alertbutton>p>button{
             width:0.7rem;
-            margin:0.05rem 0.1rem;
+            height:0.35rem;
+            margin:0.08rem 0.05rem;
         }
         .alertbtm{
-            margin:0.1rem 0 0 0;
             border-top: 0.005rem solid rgb(154,154,154);
         }
         .cashbookhead{

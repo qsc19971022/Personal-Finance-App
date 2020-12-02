@@ -61,17 +61,13 @@ export default {
                         })
                         localStorage.setItem("token",data.token)
                         localStorage.setItem("user",this.telephone)
-                        if(localStorage.getItem("route") == "set"){
-                            this.$router.push("/index")
-                            localStorage.removeItem("route")
-                        }else{
-                            this.$router.go(-1)
-                        }
+                        this.$router.push("/index")
                     }else{
                         Dialog.alert({
                             message:"账号/密码有误"
                         })
                     }
+                    console.log(data);
                 })
 
             }

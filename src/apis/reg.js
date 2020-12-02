@@ -1,7 +1,15 @@
+/*
+ * @Author: your name
+ * @Date: 2019-11-28 10:04:20
+ * @LastEditTime : 2020-02-15 10:59:39
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/apis/reg.js
+ */
 import {BASEURL} from "../commons/Config"
 
-const REGNURL = `${BASEURL}/user/send_code/`
-const REGISTNURL = `${BASEURL}/user/regist/`
+const REGNURL = `${BASEURL}/user/tel/`
+const REGISTNURL = `${BASEURL}/user/reg/`
 
 export default {
     checkUserTel(name,flag,cb){
@@ -11,7 +19,7 @@ export default {
                 "Content-Type":"application/json"
             },
             body:JSON.stringify({
-                phone:name,
+                tel:name,
                 flag:flag
             })
         }).then(res=>{
@@ -25,7 +33,7 @@ export default {
                 "Content-Type":"application/json"
             },
             body:JSON.stringify({
-                phone:name,
+                user:name,
                 code:code,
                 flag:flag,
                 query:query

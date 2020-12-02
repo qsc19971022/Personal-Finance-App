@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="robot-chat" ref="chat">
-                <div class="robot-chat-prompt"><p>Hi, <span class="robot-user">太阳以西</span>,我是钱小夕很高为你服务</p></div>
+                <div class="robot-chat-prompt"><p>Hi, <span class="robot-user">{{this.username}}</span>,我是钱小夕很高为你服务</p></div>
             </div>
         </div>
         <div class="robot-footer">
@@ -32,7 +32,8 @@
         name: "robot",
         data(){
             return {
-                info:''
+                info:'',
+                username:localStorage.getItem("touxiang")
             }
         },
         components:{
@@ -47,7 +48,7 @@
                this.info = '';
                 $.ajax({
                    type: "get",
-                   url: 'https://api.jisuapi.com/iqa/query?appkey=06d97dfdd1fd0bb5&question='+oInfo,
+                   url: 'https://api.jisuapi.com/iqa/query?appkey=7842574f6726d1b5&question='+oInfo,
                    dataType: "jsonp",
                    jsonp: "callback",
                    success: function(data) {
@@ -56,6 +57,10 @@
                        let getInfo = `<div style="text-align: left"><div style="border-radius: 0.1rem 0.3rem 0.3rem 0.3rem;display: inline-block; background-color: white;margin-top: 0.2rem;font-size: 0.15rem;
         text-align: left; box-sizing: border-box;padding: 0.2rem 0.12rem;">${getRes}</div></div>`;
                        $(".robot-chat").append(getInfo);
+                       let oHigh= $(".robot-chat").height();
+                       if(oHigh>500){
+                           $(".robot").scrollTop(oHigh-500)
+                       }
                    }
                 });
             }

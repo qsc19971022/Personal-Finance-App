@@ -1,7 +1,15 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-02 01:21:20
+ * @LastEditTime: 2020-02-18 19:19:22
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/views/my.vue
+ -->
 <template>
     <div>
         <my-header></my-header>
-        <my-middle :data="turnInfo" :data1="info1"></my-middle>
+        <my-middle :data="turnInfo" :data1="Info1"></my-middle>
     </div>
 </template>
 
@@ -20,13 +28,13 @@
         data(){
             return{
                 turnInfo:"",
-                info1:[],
+                Info1:{},
             }
         },
         methods:{
             _initData(){
                 let user = localStorage.getItem("user")
-                turnInApi.turnIn(user,"转入",(data)=>{
+                turnInApi.turnIn(user,(data)=>{
                     this.turnInfo = data
                     console.log(data);
                 })
@@ -34,17 +42,19 @@
 
             async _initPageInfo(){
                 let user_phone=localStorage.getItem("user");
-                let data=await my_account.getInfoPage(user_phone);
-                this.Info1=data;
+                let data1=await my_account.getInfoPage(user_phone);
+                this.Info1=data1;
+                console.log(this.Info1)
             },
         },
-        async mounted() {
-            this._initPageInfo();
+         mounted() {
+             this._initPageInfo();
         },
 
 
         created(){
             this._initData()
+
 
         },
 

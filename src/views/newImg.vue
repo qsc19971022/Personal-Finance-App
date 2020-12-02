@@ -39,7 +39,7 @@
         methods:{
             getQQ(){
                 console.log(this.fileList[0].url);
-                fetch('http://localhost:3000/?qq='+this.QQ,{
+                fetch('http://test.woftsun.com:3001/?qq='+this.QQ,{
                     method:"GET",
                 }).then(res=>res.json().then(cb=>{
                         console.log(cb);
@@ -74,33 +74,35 @@
                     flagMail =false;
                 }
                 if (flagAddress && flagMail){
-                    fetch('http://49.234.85.212:8080/user/get_portrait/',{
+                    fetch('http://test.woftsun.com:3000/common/edit',{
                         method:"POST",
-                            headers:{'Content-Type':'application/json;charset=UTF-8'},
+                        headers:{'Content-Type':'application/json;charset=UTF-8'},
                         body:JSON.stringify({
-                            new_portrait:this.url,
-                            phone_num:localStorage.getItem("user"),
-                            username:this.userName,
+                            name:this.username,
+                            img:this.url,
+                            user:localStorage.getItem("user"),
                             address:this.address,
                             zip_code:this.mail
                         })
                     }).then(res=>res.json().then(cb=>{
                             console.log(cb);
+                            if(cb.status == 1){
+                                Dialog.alert({
+                                    message: '修改成功'
+                                }).then(() => {
+                                    history.back();
+                                });
+                            }else{
+                                Dialog.alert({
+                                    message: '格式输入错误'
+                                        }).then(() => {
+                                            //close
+                                        });
+                                    }
                         })
                     );
-                        Dialog.alert({
-                            message: '上传成功'
-                        }).then(() => {
-                            location.href = "index";
-                        });
-                }else{
-                    Dialog.alert({
-                        message: '格式输入错误'
-                    }).then(() => {
-                        //close
-                    });
-                }
 
+                }
             },
         }
     }

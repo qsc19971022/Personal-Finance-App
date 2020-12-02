@@ -4,12 +4,12 @@
         <p><a><span class="redspan"></span>{{data.product_name}}</a><a v-if="data.is_novice">新人系列</a></p>
         <div class="product-con">
             <div class="product-left">
-                <p><span>{{data.rate}}</span><span>%</span></p>
+                <p><span>{{data.product_rate}}</span><span>%</span></p>
                 <p>年化收益率</p>
                 <i></i>
             </div>
             <div class="product-right">
-                <p><span>项目期限</span><span>{{data.trade}}天</span></p>
+                <p><span>项目期限</span><span>{{data.product_trade}}天</span></p>
                 <p><span>剩余金额</span><span>{{data.pro_balance}}</span></p>
                 <span>一次性付息还本</span>
             </div>

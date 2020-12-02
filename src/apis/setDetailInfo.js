@@ -1,8 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2019-11-28 16:48:50
+ * @LastEditTime: 2020-03-10 10:38:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/apis/setDetailInfo.js
+ */
 // import {BASEURL} from "../commons/config"
 // const DETAILBTMURL = "http://localhost:3005/productinfo"
 // const DETAILURL = "http://localhost:3005/detailinfo"
-const DETAILBTMURL = "http://49.234.85.212:8080/products/pay/"
-const DETAILURL = "http://49.234.85.212:8080/products/detail/"
+const DETAILBTMURL = "http://test.woftsun.com:3000/products/pay/"
+const DETAILURL = "http://test.woftsun.com:3000/products/detail/"
 
 export default{
     getdetails(name,paynum,phone,cb){
@@ -13,8 +21,8 @@ export default{
             },
             body:JSON.stringify({
                 product_name:name,
-                pay_num:paynum,
-                phone_num:phone
+                money:paynum,
+                user:phone
             })
         }).then(res=>{
             res.json().then(cb)

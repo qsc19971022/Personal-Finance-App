@@ -2,16 +2,16 @@
     <div class="clo">
         <div class="bld">
             <p>总金额(元)<span :class="flag?'ceye':'oeye'" @click="flag=!flag"></span></p>
-            <p>{{flag?data.balance_money:'***'}}</p>
+            <p>{{flag?data.balance:'***'}}</p>
             <p>如果转入1万元，30天收益约<span>19.24</span>元</p>
             <div class="fld">
                 <div class="fls">
                     <p>累计收入(元)</p>
-                    <p>{{data.user_balance}}</p>
+                    <p>9.62</p>
                 </div>
                 <div class="fls">
                     <p>七日年化(%)</p>
-                    <p>{{data.balance_rate}}</p>
+                    <p>2.24</p>
                 </div>
             </div>
             <button @click="turnOut" class="lbtn">转出</button>

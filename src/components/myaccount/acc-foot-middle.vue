@@ -12,6 +12,7 @@
 <script>
     export default {
         name: "acc-foot-middle",
+        props:["data"],
         data(){
            return{
                "func":[
@@ -46,6 +47,7 @@
                 if(index==1&&index1==0){
                     this.$router.push("/MyCoupon");
                 }else if(index==1&&index1==2){
+                    localStorage.setItem("bank_list",this.data);
                     this.$router.push("/BindingCard");
                 }else if (index==2&&index1==0){
                     this.$router.push("/setPayPwd");

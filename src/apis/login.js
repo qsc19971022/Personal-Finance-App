@@ -10,7 +10,7 @@ export default {
                 "Content-Type":"application/json;charset=UTF-8"
             },
             body:JSON.stringify({
-                name: name,
+                user: name,
                 pwd: pass
             })
         }).then(res=>res.json().then(cb))

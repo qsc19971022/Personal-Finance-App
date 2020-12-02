@@ -1,11 +1,11 @@
 <template>
     <div class="detail">
-        <div class="detail-div1">{{data.rate}}<span>%</span></div>
+        <div class="detail-div1">{{data.product_rate}}<span>%</span></div>
         <p class="detail-p1">年化收益率</p>
         <div class="detail-posi">
             <div class="detail-posi-top">
                 <div>
-                    <p>{{data.trade}}</p>
+                    <p>{{data.product_trade}}</p>
                     <p>投资期限(天)</p>
                 </div>
                 <div>
@@ -15,15 +15,11 @@
             </div>
             <p class="detail-xt"></p>
             <p class="detail-p2">剩余金额<span>{{data.pro_balance}}</span>元</p>
-            <p class="detail-p3">已有<span>{{data.paid_count}}</span>笔投资记录<span>>></span></p>
+            <p class="detail-p3">已有<span>0</span>笔投资记录<span>>></span></p>
         </div>
         <div class="detail-jy">
             <p class="detail-p4"><span></span>交易规则</p>
             <table border="1">
-                <tr>
-                    <td>剩余时间</td>
-                    <td>0天12小时41分07秒</td>
-                </tr>
                 <tr>
                     <td>起息日期</td>
                     <td>满标审核通过后次日起息</td>
@@ -41,10 +37,10 @@
         <div class="detail-product">
             <p class="detail-p4"><span></span>产品概要</p>
             <div>
-                <p>产品介绍</p><p>分开了撒酒疯开发家的舒服了撒开房方式来的及附属卡决定分开发的看了饭</p>
+                <p>产品介绍</p><p>本产品为荔枝理财提供的个人独立借款标的，通过哦强大的风控系统来筛选出优质的借款个体，满足用户的需求</p>
             </div>
             <div>
-                <p>产品特点</p><p><span>{{data.produce}}</span><span>{{data.produce}}</span></p>
+                <p>产品特点</p><p><span>{{aa}}&nbsp;</span><span> 优选标</span></p>
             </div>
             <div>
                 <p>风险等级</p><p>{{data.risk_level}}</p>
@@ -56,7 +52,7 @@
                 <p>安全保障</p><p>车辆抵押</p>
             </div>
             <p class="detail-p5">
-                发快递放假啊舒服发生的饭安顺发尽快发的手机卡了粉撒娇的饭发的解放啦说的放假啊时刻提防发生的来看放假啊是快乐的放假啊是
+                本产品不承诺保本或最低收益，产品收益仅供参考，不够成荔枝金融及其关联公司对收益的任何承诺和保证。本产品存续期间可能存在的投资风险将您自行承担。
             </p>
         </div>
         <div class="detail-foot">
@@ -82,16 +78,24 @@
     import {Dialog} from "vant"
     Vue.use(Popup);
     Vue.use(Dialog);
+    import { CountDown } from 'vant';
+    Vue.use(CountDown);
     export default {
         name: "detail-btm",
         data(){
             return{
                 show: false,
-                detailInput:5200
+                detailInput:null,
+                aa:'',
+                names:"新人专享001",
             }
         },
-        props:["data"],
+        props:["data","name1"],
         methods:{
+            update1(){
+                // this.aa = this.$route.query.aa;
+                this.names= this.name1
+            },
             showPopup() {
                 this.show = true;
             },
@@ -105,14 +109,16 @@
             detailQueding(){
                 if(this.detailInput % 100 ==0 && this.detailInput>=100){
                     this.show = false;
-                    let name= "新人专享001"
                     let money = this.detailInput;
                     let user = localStorage.getItem("user");
-                    detailInfo.getdetails(name,money,user,(data)=>{
-                        console.log(name)
-                        console.log(data)
-                        console.log(money)
-                        alert(data.msg)
+                    detailInfo.getdetails(this.names,money,user,(data)=>{
+                        // console.log(data);
+                        console.log(this.name1,money,user)
+                        Dialog.alert({
+                            message: data.msg
+                        }).then(() => {
+                            // on close
+                        });
                     })
                 }else{
                     Dialog.alert({
@@ -122,6 +128,9 @@
                     });
                 }
             }
+        },
+        created() {
+            this.update1()
         }
     }
 </script>
@@ -276,7 +285,7 @@
     .detail-product>div>p:nth-of-type(1){
         width:0.8rem;
         color:gray;
-        font-size: 0.14rem;
+        font-size: 0.15rem;
     }
     .detail-product>div>p:nth-of-type(2){
         width:2.5rem;

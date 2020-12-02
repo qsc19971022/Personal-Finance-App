@@ -1,7 +1,7 @@
 <template>
   <div class="bankfooter" @click="todetail">
     <div class="footerleft">
-      <p class="rate">{{data.all_return_rate}}</p>
+       <p class="rate">{{data.all_return_rate}}</p>
       <p class="ratename">储蓄回报率</p>
     </div>
     <div class="footerright">
@@ -16,10 +16,10 @@ export default {
   name: "bankfooter",
   props:["data","sid"],
   methods:{
-  todetail(){
+  // todetail(){
     // let dat = this.data[sid].fund_name
     // this.$router.push({path:`/detail?name=${dat}`})
-  }
+  // }
   }
 };
 </script>

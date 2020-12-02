@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4faba80-9888-48f0-9a8c-1f4cd7d6d788" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/MyCouponApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/MyCouponApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/balance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/balance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/bankseletionApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/bankseletionApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/cardinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/cardinfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/giftApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/giftApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/infoApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/infoApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/my_account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/my_account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/reg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/reg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/setCashbook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/setCashbook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/setDetailInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/setDetailInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/setProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/setProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/setPwd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/setPwd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/setmoneyApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/setmoneyApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/setpaypwd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/setpaypwd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/termMoney.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/termMoney.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/turnIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/turnIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/Config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/ZQConfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/fmfconfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/lcyConfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/wwwconfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Bank-Selection/bankfooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bank-Selection/bankfooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Bank-Selection/banklist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bank-Selection/banklist.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/balance/body.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/balance/body.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/bing/bind-con.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/bing/bind-con.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cashbook/cashbook-btm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cashbook/cashbook-btm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cashbook/cashbook-head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cashbook/cashbook-head.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/footer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/detail/detail-btm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/detail/detail-btm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/firends/center.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/firends/center.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gift/newbtm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gift/newbtm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index/navItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index/navItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index/news.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index/news.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/info/info-con.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/info/info-con.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/info/info-doc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/info/info-doc.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/body.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/body.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/my/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/my/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/my/middle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/my/middle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/myaccount/acc-foot-middle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/myaccount/acc-foot-middle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/myaccount/acc-foot-top.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/myaccount/acc-foot-top.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/myaccount/account-footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/myaccount/account-footer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/myaccount/account-head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/myaccount/account-head.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/myaccount/account-me.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/myaccount/account-me.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/btm/btmItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/btm/btmItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/headerBtn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/headerBtn.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/topimg1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/topimg1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/register/body.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/register/body.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/robot/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/robot/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/termMoney/body.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/termMoney/body.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/topUp/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topUp/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/turnIn/body.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/turnIn/body.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/turnIn/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/turnIn/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/vip-activities/activities.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vip-activities/activities.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/vip-activities/viptop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vip-activities/viptop.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Bank-Selection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Bank-Selection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/BindingCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/BindingCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/BingCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/BingCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/MyCoupon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyCoupon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Myaccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Myaccount.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/balance.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/balance.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/bankcards.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/bankcards.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/cashbook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/cashbook.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/get-money.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/get-money.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/gift.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/gift.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/info.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/investigation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/investigation.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/my.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/my.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/newImg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/newImg.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/product.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/product.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/robot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/robot.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/set-money.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/set-money.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/setPass.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/setPass.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/set_paypwd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/set_paypwd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/termMoney.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/termMoney.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/top-up.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/top-up.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/turnIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/turnIn.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/vip-activities.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/vip-activities.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1a3sGY8m4SAv1R5tHizMCrbI11F" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+  </component>
+  <component name="RunManager">
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4faba80-9888-48f0-9a8c-1f4cd7d6d788" name="Default Changelist" comment="" />
+      <created>1585975517025</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585975517025</updated>
+      <workItem from="1585975519671" duration="1160000" />
+      <workItem from="1592463275238" duration="863000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1636" height="295" key="GridCell.Tab.0.bottom" timestamp="1592547812684">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1592547812684" />
+    <state width="1636" height="295" key="GridCell.Tab.0.center" timestamp="1592547812683">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1592547812683" />
+    <state width="1636" height="295" key="GridCell.Tab.0.left" timestamp="1592547812682">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1592547812682" />
+    <state width="1636" height="295" key="GridCell.Tab.0.right" timestamp="1592547812684">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1592547812684" />
+  </component>
+</project>

@@ -1,15 +1,15 @@
 <template>
-    <div>
+    <div v-if="navInfo.indexItem" class="index">
         <div class="index-header">
-            <a href="login" class="index-header-login" ref="login">登录</a>
-            <a href="#" class="index-header-exit" ref="exit" @click.prevent="exit">退出</a>
+            <a class="index-header-login" ref="login">你好</a>
+<!--            <a href="#" class="index-header-exit" ref="exit" @click.prevent="exit" v-else>退出</a>-->
             <input type="search" id="index-header-search" placeholder="搜功能  搜产品" @click="search">
             <a href="#/robot" class="index-header-wx"></a>
             <a href="#/map" class="index-header-add"></a>
         </div>
         <index-banner></index-banner>
         <index-top v-if="navInfo" :data="navInfo.indexNews"></index-top>
-        <index-nav v-if="navInfo" :data="navInfo.data"></index-nav>
+        <index-nav v-if="navInfo" :data="navInfo.indexItem"></index-nav>
         <div class="index-date">
             <div class="index-date-week">
                 <div class="index-date-week-left">
@@ -28,53 +28,61 @@
                 <p>全新权益快来体验</p>
             </div>
             <div class="index-club-right">
-                <a href="#">点击进入</a>
+                <a href="#/robot">点击进入</a>
             </div>
         </div>
         <div class="index-money">
-            <a href="#" class="index-money-left"></a>
-            <a href="#" class="index-money-right"></a>
+            <a href="#/product" class="index-money-left"></a>
+            <a href="#/info" class="index-money-right"></a>
         </div>
     </div>
+    <money-loading v-else></money-loading>
 </template>
 
 <script>
+    import loadings from "../components/commons/loading"
+    import { Loading } from 'vant';
     import banner from "../components/index/banner";
     import DodoTop from "../components/index/DodoTop";
-    import indexApi from "../apis/indexApi";
+    //import indexApi from "../apis/indexApi";
     import indexNav from "../components/index/indexNav";
     export default {
         name: "index",
         components:{
             'index-banner':banner,
             'index-top':DodoTop,
-            'index-nav':indexNav
+            'index-nav':indexNav,
+            [Loading.name]:Loading,
+            'money-loading':loadings,
         },
         data(){
             return {
                 navInfo:[],
                 day:0,
                 week:'',
-                ls:""
+                ls:"",
+                show:true,
             }
         },
         methods:{
-            _initNavData(){
-                indexApi.getIndexinfoByUserId(data=>{
-                    this.navInfo = data;
-                    console.log(data.indexItem)
-                })
-            },
+            // _initNavData(){
+            //     indexApi.getIndexinfoByUserId(data=>{
+            //         this.navInfo = data;
+            //         console.log(data.indexItem)
+            //     })
+            // },
             exit(){
             this.ls.removeItem("user");
+            this.ls.removeItem("token");
                 location.reload();
             },
             search(){
                 location.href = "#/search"
             },
             news(){
-                fetch("http://49.234.85.212:8080/ico/img/").then(res=>{
+                fetch("http://qqq.woftsun.com:3007/ten/").then(res=>{
                 res.json().then(cb=>{
+                    this.navInfo = cb;
                     console.log(cb);
                 });
             })
@@ -82,7 +90,7 @@
         },
         created() {
             this.news();
-            this._initNavData();
+           // this._initNavData();
             let data = new Date();
             let day = data.getDate();
             this.day = day;
@@ -112,24 +120,23 @@
             }
             this.week = week;
         },
-        mounted() {
-            let ls = window.localStorage;
-            this.ls = ls;
-            let user = this.ls.getItem("user");
-            let login = this.$refs.login;
-            let exit = this.$refs.exit;
+        beforeMount() {
+            let user = localStorage.getItem("user");
+        //     let login = this.$refs.login;
+        //     let exit = this.$refs.exit;
             if(user){
-                login.style.display = "none";
-                exit.style.display = "block";
+               this.show = false;
+               this.show1 = true
             }else {
-                login.style.display = "block";
-                exit.style.display = "none";
+                this.show1 = false
+                this.show = true
             }
         }
     }
 </script>
 
 <style scoped>
+
     .index-header{
         width: 100%;
         height: 0.5rem;
@@ -324,4 +331,13 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
      }
+    .loads{
+        width: 100%;
+        height: 6rem;
+        text-align: center;
+        line-height: 6rem;
+        font-size: 0.3rem;
+        color: black;
+        font-weight: bold;
+    }
 </style>

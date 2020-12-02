@@ -12,7 +12,7 @@
             <p>C、在网上看到别人被骗过</p>
             <p>D、没有被骗过</p>
         </div>
-        <p class="invest-problem-title">2.你认为钱洗洗的安全程度是怎么样的</p>
+        <p class="invest-problem-title">2.你认为钱夕夕的安全程度是怎么样的</p>
         <div class="invest-problem-body2">
             <p>A、非常高</p>
             <p>B、高</p>
@@ -32,6 +32,13 @@
             <p>B、100-1000元</p>
             <p>C、1000-2000元</p>
             <p>D、2000元以上</p>
+        </div>
+        <p class="invest-problem-title">5.你是否准备钱夕夕购买过产品。</p>
+        <div class="invest-problem-body5">
+            <p>A、买过/p>
+            <p>B、没打算买</p>
+            <p>C、准备买</p>
+            <p>D、再看看</p>
         </div>
         <button class="invest-commit" @click="sendInfo">提交问卷</button>
     </div>
@@ -54,14 +61,16 @@
                 let str2 = $(".invest-problem-body2>.invest-active").html().substring(0,1);
                 let str3 = $(".invest-problem-body3>.invest-active").html().substring(0,1);
                 let str4 = $(".invest-problem-body4>.invest-active").html().substring(0,1);
-                let options = str1 +''+ str2 +str3 +str4;
+                let str5 = $(".invest-problem-body4>.invest-active").html().substring(0,1);
+                let options = str1 +''+ str2 +str3 +str4 + str5;
                 let length1 = $(".invest-problem-body1>.invest-active").length;
                 let length2 = $(".invest-problem-body2>.invest-active").length;
                 let length3 = $(".invest-problem-body3>.invest-active").length;
                 let length4 = $(".invest-problem-body4>.invest-active").length;
-                let allLength = +length1 + length2 + length3 + length4
+                let length5 = $(".invest-problem-body4>.invest-active").length;
+                let allLength = +length1 + length2 + length3 + length4 + length5;
                 let user = localStorage.getItem("user");
-                if (allLength == 4){
+                if (allLength == 5){
                     fetch('http://49.234.85.212:8080/question/naire/',{
                         method:"POST",
                         headers:{'Content-Type':'application/json;charset=UTF-8'},
@@ -74,7 +83,13 @@
                                 Dialog.alert({
                                     message: '问卷提交完成'
                                 }).then(() => {
-                                    location.href = "robot";
+                                    location.href = "javascript:history.back()";
+                                });
+                            }else{
+                                Dialog.alert({
+                                    message: '请问重复提交'
+                                }).then(() => {
+                                    location.href = "javascript:history.back()";
                                 });
                             }
                         })
@@ -100,6 +115,9 @@
                 $(this).addClass("invest-active").siblings().removeClass("invest-active");
             });
             $(".invest-problem-body4>p").click(function(){
+                $(this).addClass("invest-active").siblings().removeClass("invest-active");
+            });
+            $(".invest-problem-body5>p").click(function(){
                 $(this).addClass("invest-active").siblings().removeClass("invest-active");
             });
         }
@@ -140,12 +158,12 @@
         margin: 0.12rem 0;
         font-size: 0.18rem;
     }
-    .invest-problem-body1,.invest-problem-body2,.invest-problem-body3,.invest-problem-body4{
+    .invest-problem-body1,.invest-problem-body2,.invest-problem-body3,.invest-problem-body4,.invest-problem-body5{
         width: 100%;
         height: auto;
         background-color: white;
     }
-    .invest-problem-body1>p,.invest-problem-body2>p,.invest-problem-body3>p,.invest-problem-body4>p{
+    .invest-problem-body1>p,.invest-problem-body2>p,.invest-problem-body3>p,.invest-problem-body4>p,.invest-problem-body5>p{
         width: 100%;
         height: 0.5rem;
         line-height: 0.5rem;

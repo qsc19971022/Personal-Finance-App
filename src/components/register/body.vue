@@ -51,14 +51,18 @@ export default {
         },
         checkIn(){
             if(this.flagName){
-                Reg.checkUserCode(this.telephone,this.code,this.content,this.$route.query.id,(data)=>{
+                Reg.checkUserCode(this.telephone,this.code,this.content,this.$route .query.id,(data)=>{
                     if(data.status == 0){
                         this.$router.push("/set")
                         localStorage.setItem("tel",this.telephone)
                         localStorage.setItem("flag",this.content)
-                    }else{
+                    }else if(data.status == 1){
                         Dialog.alert({
                             message:"手机验证码有误"
+                        })
+                    }else if(data.status == 2){
+                        Dialog.alert({
+                            message:"用户已存在"
                         })
                     }
                 })
@@ -113,85 +117,89 @@ export default {
 </script>
 
 <style scoped>
-.sct{
-    color: red;
-    display: none;
-}
-.log-body{
-    font-size: 0.16rem;
-    position: relative;
-    padding-top: 0.2rem;
-}
-.log-body>img:nth-child(1){
-    width: 0.55rem;
-    height: 0.55rem;
-    position: absolute;
-    left: 42%;
-    top: -0.25rem;
-}
-#ipt{
-    background-color: white;
-    width: 92%;
-    height: 1.3rem;
-    margin-left: 4%;
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-    border-radius: 0.1rem;
-}
-.tel{
-    height: 0.5rem;
-    font-size: 100%;
-}
-.pas{
-    height: 0.5rem;
-    font-size: 100%;
-    padding-left: 0.3rem;
-}
-#ipt hr{
-    background-color:rgb(244, 244, 244);height:1px;border:none;
-}
-.btn{
-    width: 90%;
-    margin-left: 5%;
-    text-align: center;
-    height: 0.45rem;
-    background-color: rgb(255, 150, 0);
-    border: none;
-    outline: none;
-    color: white;
-    font-size: 0.16rem;
-    margin-top: 0.3rem;
-}
-.icon-shouji{
-    font-size: 0.22rem;
-    margin-left: 0.1rem;
-}
-.icon-mima{
-    font-size: 0.18rem;
-    margin-left: 0.14rem;
-}
-.tbtn{
-    /* border: none; */
-    height: 0.3rem;
-    outline: none;
-}
-.ror{
-    display: flex;
-    margin-top: 0.15rem;
-    margin-bottom: 0.2rem;
-}
-.ror p:nth-child(1){
-    margin-left: 0.8rem;
-}
-.ror p:nth-child(2){
-    margin-left: 1.4rem;
-}
-.show{
-    color: rgb(255, 57, 74);
-    font-weight: 600;
-}
-.pan{
-    color: red;
-    font-size: 0.12rem;
-}
+    .sct{
+        color: red;
+        display: none;
+    }
+    .log-body{
+        font-size: 0.16rem;
+        position: relative;
+        padding-top: 0.2rem;
+    }
+    .log-body>img:nth-child(1){
+        width: 0.55rem;
+        height: 0.55rem;
+        position: absolute;
+        left: 42%;
+        top: -0.25rem;
+    }
+    #ipt{
+        background-color: white;
+        width: 92%;
+        height: 1.3rem;
+        margin-left: 4%;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+        border-radius: 0.1rem;
+        position: relative;
+    }
+    .tel{
+        height: 0.5rem;
+        font-size: 100%;
+        padding-left: 0.2rem;
+    }
+    .pas{
+        height: 0.5rem;
+        font-size: 100%;
+        padding-left: 0.5rem;
+    }
+    #ipt hr{
+        background-color:rgb(244, 244, 244);height:1px;border:none;
+    }
+    .btn{
+        width: 90%;
+        margin-left: 5%;
+        text-align: center;
+        height: 0.45rem;
+        background-color: rgb(255, 150, 0);
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 0.16rem;
+        margin-top: 0.3rem;
+    }
+    .icon-shouji{
+        font-size: 0.22rem;
+        margin-left: 0.1rem;
+    }
+    .icon-mima{
+        font-size: 0.18rem;
+        margin-left: 0.14rem;
+    }
+    .tbtn{
+        height: 0.3rem;
+        outline: none;
+        position: absolute;
+        top: 0.77rem;
+        left: 65%
+    }
+    .ror{
+        display: flex;
+        margin-top: 0.15rem;
+        margin-bottom: 0.2rem;
+    }
+    .ror p:nth-child(1){
+        margin-left: 0.8rem;
+    }
+    .ror p:nth-child(2){
+        margin-left: 1.4rem;
+    }
+    .show{
+        color: rgb(255, 57, 74);
+        font-weight: 600;
+    }
+    .pan{
+        color: red;
+        font-size: 0.12rem;
+    }
 </style>

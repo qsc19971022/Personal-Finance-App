@@ -1,7 +1,15 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-23 11:10:34
+ * @LastEditTime: 2020-03-09 13:54:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/components/turnIn/header.vue
+ -->
 <template>
     <div class="tit">
         <img @click="gob" src="../../../public/assets/images/balance/0191121155037.png">
-        <p>转入余额多</p>
+        <p>转入</p>
     </div>
 </template>
 
@@ -10,7 +18,7 @@ export default {
     name:"balance-turn-in-header",
     methods:{
         gob(){
-            this.$router.push("/balance")
+            window.history.back(-1); 
         }
     }
 }

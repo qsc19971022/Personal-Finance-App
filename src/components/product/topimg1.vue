@@ -1,7 +1,7 @@
 <template>
     <div class="product-topimg1">
         <img src="../../../public/assets/images/product/product-2.png" alt="">
-        <a href="#"><img src="../../../public/assets/images/product/product-btn.png" alt=""></a>
+        <a href="#/term"><img src="../../../public/assets/images/product/product-btn.png" alt=""></a>
     </div>
 </template>
 

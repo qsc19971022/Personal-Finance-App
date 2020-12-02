@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-27 10:58:34
+ * @LastEditTime: 2020-02-28 10:42:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/views/turnIn.vue
+ -->
 <template>
     <div class="an">
         <balance-turn-in-header></balance-turn-in-header>
@@ -26,13 +34,19 @@ export default {
     methods:{ 
         _initData(){
             let user = localStorage.getItem("user")
-            turnInApi.turnIn(user,"转入",(data)=>{
-                this.turnInfo = data
+            turnInApi.turnIn(user,(data)=>{
+                this.turnInfo = data;
+                let id = data.bank_card.length;
+                for(let i = 0; i<=id-1; i++){
+                    data.bank_card[i].bank_id = data.bank_card[i].bank_id.slice(-4);
+                    data.bank_card[i].bank = data.bank_card[i].bank + '(' + data.bank_card[i].bank_id + ')';
+                }
+                console.log(data);
             })
         }
     },
     created(){
-        this._initData()
+        this._initData();
     }
 }
 </script>

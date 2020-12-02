@@ -1,6 +1,14 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-02 12:26:12
+ * @LastEditTime: 2020-03-10 11:03:04
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /moneywoftsun-app/moneywoftsun-app/src/components/myaccount/account-head.vue
+ -->
 <template>
     <div class="account-head">
-        <a href="#/robot"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_03.png"></a>
+        <a href="javascript:history.back(-1)"><img src="../../../public/assets/images/index/return.png"></a>
         <p>
             <a href="#/robot"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_05.png"></a>
             <a href="#/newImg"><img src="../../../public/assets/images/info/Screenshot_20191121_090552_com.xzck_07.png"></a>

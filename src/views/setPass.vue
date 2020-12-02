@@ -12,7 +12,7 @@
 
 <script>
 import { Dialog } from 'vant'
-import Set from '../apis/setPass'
+//import Set from '../apis/setPass'
 export default {
     name:"set-pass",
     components:{
@@ -23,7 +23,8 @@ export default {
             pass:"",
             mkpass:"",
             flagPass:false,
-            flagmkPass:false
+            flagmkPass:false,
+            tel:''
         }
     },
     methods:{
@@ -47,20 +48,48 @@ export default {
             }
         },
         makeSure(){
+            console.log(this.tel);
             if(this.flagPass && this.flagmkPass){
-                let tel = localStorage.getItem("tel")
-                Set.checkUserSet(tel,this.pass,()=>{
-
-                })
-                Dialog.alert({
-                    message:"密码设置成功"
-                })
-                this.$router.push("/login")
-                localStorage.removeItem("tel")
-                localStorage.setItem("route","set")
-
+            //     Set.checkUserSet(this.tel,this.pass,(data)=>{
+            //         if(data.status == 0){
+            //             Dialog.alert({
+            //             message:"密码设置成功"
+            //              });
+            //         this.$router.push("/login")
+            //         }else {
+                        //  Dialog.alert({
+                        // message:"密码设置失败"
+                        //  });
+            //         }
+            //     })
+             fetch('http://test.woftsun.com:3000/user/setpwd',{
+                 method:"POST",
+                headers:{
+                "Content-Type":"application/json"
+            },
+                 body:JSON.stringify({
+                    user:this.tel,
+                     //oldpwd:oldpass,
+                     pwd:this.pass
+             })
+                 }).then(res=>{
+                     if(res.status == 200){
+                         Dialog.alert({
+                         message:"密码设置成功"
+                          });
+                        this.$router.push("/login")
+                     }else {
+                        Dialog.alert({
+                        message:"密码设置失败"
+                         });
+                     }
+             })
             }
-        }
+        }  
+    },
+    created(){
+        let tel = localStorage.getItem('tel');
+        this.tel = tel;
     }
 }
 </script>
