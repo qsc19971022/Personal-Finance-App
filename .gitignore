@@ -4,6 +4,7 @@
 src/.temp
 node_modules
 dist
+dist.zip
 
 # yarn.lock is the authoritative lock file for the repo, so ignore
 # any package-lock.json file that npm generates.
